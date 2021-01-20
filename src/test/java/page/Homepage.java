@@ -8,12 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class Homepage {
 
     protected static WebDriver driver;
-    private static WebDriverWait wait;
-    private static WebElement element;
-    private JavascriptExecutor js;
+    protected static WebDriverWait wait;
+    protected static WebElement element;
+    protected JavascriptExecutor js;
 
     public void setWebDriver(WebDriver driver) {
         Homepage.driver = driver;
@@ -127,7 +129,7 @@ public class Homepage {
 
     } // end method clickNavHamMenu
 
-    public void viewSections(){
+    public void viewSections() {
 
         element = driver.findElement(sectionShopCategory_homePage);
         String actualTitle1 = element.getText();
@@ -149,17 +151,25 @@ public class Homepage {
         Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
         System.out.println("Section title is: " + actualTitle3);
 
-        element = driver.findElement(sectionTopBeautyProd_homePage);
-        String actualTitle4 = element.getText();
         String expectedTitle4 = "Top Beauty & Personal Care products";
-        Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle4);
+        try{
+            element = driver.findElement(sectionTopBeautyProd_homePage);
+            String actualTitle4 = element.getText();
+            Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle4);
+        }catch (Exception e){
+            System.out.println(expectedTitle4 + " section is not available at the moment.");
+        }
 
-        element = driver.findElement(sectionTopSellers_homePage);
-        String actualTitle5 = element.getText();
         String expectedTitle5 = "Amazon Top Sellers";
-        Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle5);
+        try{
+            element = driver.findElement(sectionTopSellers_homePage);
+            String actualTitle5 = element.getText();
+            Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle5);
+        }catch (Exception e){
+            System.out.println(expectedTitle5 + " section is not available at the moment.");
+        }
 
         element = driver.findElement(sectionComfyStyles_homePage);
         String actualTitle6 = element.getText();
@@ -167,35 +177,55 @@ public class Homepage {
         Assert.assertEquals(actualTitle6, expectedTitle6, "Title does not match!");
         System.out.println("Section title is: " + actualTitle6);
 
-        element = driver.findElement(sectionGifts_homePage);
-        String actualTitle7 = element.getText();
         String expectedTitle7 = "Gifts in Video Games under $30";
-        Assert.assertEquals(actualTitle7, expectedTitle7, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle7);
+        try{
+            element = driver.findElement(sectionGifts_homePage);
+            String actualTitle7 = element.getText();
+            Assert.assertEquals(actualTitle7, expectedTitle7, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle7);
+        } catch (Exception e){
+            System.out.println(expectedTitle7 + " section is not available at the moment.");
+        }
 
-        element = driver.findElement(sectionMustHave_homePage);
-        String actualTitle8 = element.getText();
         String expectedTitle8 = "Must have Wireless products";
-        Assert.assertEquals(actualTitle8, expectedTitle8, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle8);
+        try{
+            element = driver.findElement(sectionMustHave_homePage);
+            String actualTitle8 = element.getText();
+            Assert.assertEquals(actualTitle8, expectedTitle8, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle8);
+        }catch (Exception e){
+            System.out.println(expectedTitle8 + " section is not available at the moment.");
+        }
 
-        element = driver.findElement(sectionStuffedToys_homePage);
-        String actualTitle9 = element.getText();
-        String expectedtitle9 = "Stuffed Animals & Toys under $10";
-        Assert.assertEquals(actualTitle9, expectedtitle9, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle9);
+        String expectedTitle9 = "Stuffed Animals & Toys under $10";
+        try{
+            element = driver.findElement(sectionStuffedToys_homePage);
+            String actualTitle9 = element.getText();
+            Assert.assertEquals(actualTitle9, expectedTitle9, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle9);
+        }catch (Exception e){
+            System.out.println(expectedTitle9 + " section is not available at the moment.");
+        }
 
-        element = driver.findElement(sectionBestSellers_homePage);
-        String actualTitle10 = element.getText();
         String expectedTitle10 = "Best Sellers in Baby";
-        Assert.assertEquals(actualTitle10, expectedTitle10, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle10);
+        try{
+            element = driver.findElement(sectionBestSellers_homePage);
+            String actualTitle10 = element.getText();
+            Assert.assertEquals(actualTitle10, expectedTitle10, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle10);
+        }catch (Exception e){
+            System.out.println(expectedTitle10 + " section is not available at the moment.");
+        }
 
-        element = driver.findElement(sectionFavToys_homePage);
-        String actualTitle11 = element.getText();
         String expectedTitle11 = "Our favorite Toys";
-        Assert.assertEquals(actualTitle11, expectedTitle11, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle11);
+        try{
+            element = driver.findElement(sectionFavToys_homePage);
+            String actualTitle11 = element.getText();
+            Assert.assertEquals(actualTitle11, expectedTitle11, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle11);
+        } catch (Exception e){
+            System.out.println(expectedTitle11 + " section is not available at the moment.");
+        }
 
     } // end method viewSections
 
