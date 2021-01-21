@@ -95,7 +95,7 @@ public class ECommerceTestCases {
         System.out.println("Product page title: " + actualTitle1);
 
         productObj.viewProductBestSeller();
-        productObj.clickAddToCartBtn();
+        productObj.clickAddToCartConfirmWindow();
 
     } // end method cTestProductPage()
 

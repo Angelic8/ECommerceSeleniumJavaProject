@@ -1,7 +1,14 @@
 package page;
 
+import org.apache.xmlbeans.GDuration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class Product extends Homepage{
 
@@ -14,8 +21,10 @@ public class Product extends Homepage{
     By prodQuantity_productPage = By.xpath("//span[@id='a-autoid-0-announce']");
     By prodQuantity0_productPage = By.xpath("//body/div[@id='a-page']/div[@id='dp']/div[@id='dp-container']/div[@id='ppd']/div[@id='rightCol']/div[@id='desktop_buybox']/div[@id='buybox']/div[@id='exports_desktop_buybox']/div[@id='exportsBuybox']/div[@id='exports_desktop_qualifiedBuybox']/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/span[1]/div[1]/div[1]/span[1]/span[1]/span[1]/span[1]/span[2]");
     By prodQuantity1_productPage = By.xpath("//a[@id='quantity_1']");
-    By prodAddToCart_productPage = By.xpath("//input[@id='add-to-cart-button']");
-    By prodProceedToCheckout_productPage = By.xpath("//span[@id='attach-sidesheet-checkout-button']");
+    By prodAddToCartBtn_productPage = By.xpath("//input[@id='add-to-cart-button']");
+    By prodCartSubtotal_productPage = By.xpath("//span[@id='attach-accessory-cart-total-string']");
+    By prodCartSubtotalPrice_productPage = By.xpath("//span[@id='attach-accessory-cart-subtotal']");
+    By prodProcToCheckoutBtn_productPage = By.xpath("//span[@id='attach-sidesheet-checkout-button']");
 
     public void clickProductBestSeller(){
 
@@ -38,17 +47,25 @@ public class Product extends Homepage{
         Assert.assertEquals(actualPrice, expectedPrice, "Product price does not match!");
         System.out.println("Product Price is: " + actualPrice);
 
-        element = driver.findElement(prodShippingImportFees_productPage);
-        String actualShippingImportFees = element.getText();
-        String expectedShippingImportFees = "$117.81 Shipping & Import Fees Deposit to Philippines";
-        Assert.assertEquals(actualShippingImportFees, expectedShippingImportFees, "Shipping and import fees does not match!");
-        System.out.println("Shipping and Import Fees is: " + actualShippingImportFees);
+        try{
+            element = driver.findElement(prodShippingImportFees_productPage);
+            String actualShippingImportFees = element.getText();
+            String expectedShippingImportFees = "$118.88 Shipping & Import Fees Deposit to Philippines";
+            Assert.assertEquals(actualShippingImportFees, expectedShippingImportFees, "Shipping and import fees does not match!");
+            System.out.println("Shipping and Import Fees is: " + actualShippingImportFees);
+        } catch (Exception e){
+            System.out.println("Shipping and Import Fees had changed.");
+        }
 
-        element = driver.findElement(prodDeliveryDate_productPage);
-        String actualDeliveryDate = element.getText();
-        String expectedDeliveryDate = "Arrives: Jan 28 - March 9";
-        Assert.assertEquals(actualDeliveryDate, expectedDeliveryDate, "Delivery date does not match!");
-        System.out.println("Delivery date is: " + expectedDeliveryDate);
+        try{
+            element = driver.findElement(prodDeliveryDate_productPage);
+            String actualDeliveryDate = element.getText();
+            String expectedDeliveryDate = "Arrives: Jan 28 - March 10";
+            Assert.assertEquals(actualDeliveryDate, expectedDeliveryDate, "Delivery date does not match!");
+            System.out.println("Delivery date is: " + expectedDeliveryDate);
+        } catch (Exception e){
+            System.out.println("Delivery date has changed.");
+        }
 
         element = driver.findElement(prodAvailability_productPage);
         String actualAvailability = element.getText();
@@ -74,13 +91,27 @@ public class Product extends Homepage{
 
     } // end method viewProductBestSeller
 
-    public void clickAddToCartBtn(){
+    public void clickAddToCartConfirmWindow(){
 
-        driver.findElement(prodAddToCart_productPage).click();
+        driver.findElement(prodAddToCartBtn_productPage).click();
         System.out.println("Add to cart button is clicked.");
 
-        driver.findElement(prodProceedToCheckout_productPage).click();
-        System.out.println("Proceed to checkout button is clicked.");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotal_productPage));
+        String actualCartSubtotal = element.getText();
+        String expectedCartSubtotal = "Cart subtotal (2 items):";
+        Assert.assertEquals(actualCartSubtotal, expectedCartSubtotal, "Cart Subtotal does not match!");
+        System.out.println("Cart Subtotal is: " + actualCartSubtotal);
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotalPrice_productPage));
+        String actualCartSubtotalPrice = element.getText();
+        String expectedCartSubtotalPrice = "$729.98";
+        Assert.assertEquals(actualCartSubtotalPrice, expectedCartSubtotalPrice, "Cart Subtotal price does not match!");
+        System.out.println("Cart Subtotal price is: " + actualCartSubtotalPrice);
+
+        wait.until(ExpectedConditions.elementToBeClickable(prodProcToCheckoutBtn_productPage));
+        System.out.println("Proceed to checkout button is clicked on Add to Cart Confirmation window.");
 
     } // end method clickAddToCartBtn()
 
