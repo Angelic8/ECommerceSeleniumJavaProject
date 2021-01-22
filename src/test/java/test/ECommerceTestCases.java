@@ -5,10 +5,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import page.Category;
 import page.Homepage;
+import page.Login;
 import page.Product;
 
 public class ECommerceTestCases {
@@ -24,6 +26,7 @@ public class ECommerceTestCases {
     protected static Homepage homepageObj;
     protected static Category categoryObj;
     protected static Product productObj;
+    protected static Login loginObj;
 
     @BeforeTest
     public void setupTest() {
@@ -42,6 +45,9 @@ public class ECommerceTestCases {
 
         productObj = new Product();
         productObj.setWebDriver(driver);
+
+        loginObj = new Login();
+        loginObj.setWebDriver(driver);
 
     } // end method setupTest()
 
@@ -81,23 +87,39 @@ public class ECommerceTestCases {
     public void cTestProductPage(){
 
         // Page title
-        String expectTitle = "International Shopping: Shop Computers that Ship Internationally";
+        String expectedTitle = "International Shopping: Shop Computers that Ship Internationally";
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectTitle, "Page title does not match!");
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
         System.out.println("Page title: " + actualTitle);
 
         productObj.clickProductBestSeller();
 
         // Product Page title
-        String expectTitle1 = "Amazon.com: Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver: Computers & Accessories";
+        String expectedTitle1 = "Amazon.com: Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver: Computers & Accessories";
         String actualTitle1 = driver.getTitle();
-        Assert.assertEquals(actualTitle1, expectTitle1, "Product page title does not match!");
+        Assert.assertEquals(actualTitle1, expectedTitle1, "Product page title does not match!");
         System.out.println("Product page title: " + actualTitle1);
 
         productObj.viewProductBestSeller();
         productObj.clickAddToCartConfirmWindow();
 
     } // end method cTestProductPage()
+
+    @Test
+    public void dTestLoginPage(){
+
+        // Page title
+        String expectedTitle = "Amazon Sign-In";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
+        System.out.println("Page title: " + actualTitle);
+
+        loginObj.viewLogin();
+        loginObj.inputUserCredentials();
+
+    } // end method cTestLoginPage()
+
+
 
     @AfterTest
     public void quitBrowser() {

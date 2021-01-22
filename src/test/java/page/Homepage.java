@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class Homepage {
 
@@ -95,61 +96,95 @@ public class Homepage {
 
     public void clickNavHamMenu() {
 
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.findElement(navHamMenu_homePage).click();
         System.out.println("\nHamburger menu is clicked.");
 
-        element = driver.findElement(navHamMenuTitle1_homePage);
-        String actualTitle1 = element.getText();
         String expectedTitle1 = "Digital Content & Devices";
-        Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
-        System.out.println("Navigation menu title is: " + actualTitle1);
+        try{
+            element = driver.findElement(navHamMenuTitle1_homePage);
+            String actualTitle1 = element.getText();
+            Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
+            System.out.println("Navigation menu title is: " + actualTitle1);
+        }catch (Exception e){
+            System.out.println(expectedTitle1 + " navigation menu title is not available at the moment.");
+        }
 
-        element = driver.findElement(navHamMenuTitle2_homePage);
-        String actualTitle2 = element.getText();
         String expectedTitle2 = "Shop By Department";
-        Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
-        System.out.println("Navigation menu title is: " + actualTitle2);
+        try{
+            element = driver.findElement(navHamMenuTitle2_homePage);
+            String actualTitle2 = element.getText();
+            Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
+            System.out.println("Navigation menu title is: " + actualTitle2);
+        }catch (Exception e){
+            System.out.println(expectedTitle2 + " navigation menu title is not available at the moment.");
+        }
 
         //js = (JavascriptExecutor) driver;
         //((JavascriptExecutor) driver).executeScript("javascript:window.scrollBy(0,350)", element);
-        element = driver.findElement(navHamMenuTitle3_homePage);
-        String actualTitle3 = element.getText();
         String expectedTitle3 = "Programs & Features";
-        Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
-        System.out.println("Navigation menu title is: " + actualTitle3);
+        try{
+            element = driver.findElement(navHamMenuTitle3_homePage);
+            String actualTitle3 = element.getText();
+            Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
+            System.out.println("Navigation menu title is: " + actualTitle3);
+        }catch (Exception e){
+            System.out.println(expectedTitle3 + " navigation menu title is not available at the moment.");
+        }
 
-        element = driver.findElement(navHamMenuTitle4_homePage);
-        String actualTitle4 = element.getText();
         String expectedTitle4 = "Help & Settings";
-        Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
-        System.out.println("Navigation menu title is: " + actualTitle4);
+        try{
+            element = driver.findElement(navHamMenuTitle4_homePage);
+            String actualTitle4 = element.getText();
+            Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
+            System.out.println("Navigation menu title is: " + actualTitle4);
+        }catch (Exception e){
+            System.out.println(expectedTitle4 + " navigation menu title is not available at the moment.");
+        }
 
-        driver.findElement(navHamMenuClose_homePage).click();
+        element = wait.until(ExpectedConditions.elementToBeClickable(navHamMenuClose_homePage));
+        element.click();
         System.out.println("Hamburger menu close button is clicked.");
 
     } // end method clickNavHamMenu
 
     public void viewSections() {
 
-        element = driver.findElement(sectionShopCategory_homePage);
-        String actualTitle1 = element.getText();
-        String expectedTitle1 = "Shop by Category";
-        Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
-        System.out.println("\nSection title is: " + actualTitle1);
-
-        element = driver.findElement(sectionShopCategories_homePage);
-        String actualTitle2 = element.getText();
-        String expectedTitle2 = "Shop top categories";
-        Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle2);
-
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         js = (JavascriptExecutor) driver;
-        element = driver.findElement(sectionDiscoverSite_homePage);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        String actualTitle3 = element.getText();
+
+        String expectedTitle1 = "Shop by Category";
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategory_homePage));
+            String actualTitle1 = element.getText();
+            Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
+            System.out.println("\nSection title is: " + actualTitle1);
+        }catch (Exception e){
+            System.out.println(expectedTitle1 + " section title is not available at the moment.");
+        }
+
+        String expectedTitle2 = "Shop top categories";
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategories_homePage));
+            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            String actualTitle2 = element.getText();
+            Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle2);
+        }catch (Exception e){
+            System.out.println(expectedTitle2 + " section title is not available at the moment.");
+        }
+
         String expectedTitle3 = "Discover Amazon";
-        Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle3);
+        try{
+            element = driver.findElement(sectionDiscoverSite_homePage);
+            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            String actualTitle3 = element.getText();
+            Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle3);
+        }catch (Exception e){
+            System.out.println(expectedTitle3 + " section title is not available at the moment");
+        }
 
         String expectedTitle4 = "Top Beauty & Personal Care products";
         try{
@@ -171,11 +206,15 @@ public class Homepage {
             System.out.println(expectedTitle5 + " section is not available at the moment.");
         }
 
-        element = driver.findElement(sectionComfyStyles_homePage);
-        String actualTitle6 = element.getText();
         String expectedTitle6 = "Comfy styles for her";
-        Assert.assertEquals(actualTitle6, expectedTitle6, "Title does not match!");
-        System.out.println("Section title is: " + actualTitle6);
+        try{
+            element = driver.findElement(sectionComfyStyles_homePage);
+            String actualTitle6 = element.getText();
+            Assert.assertEquals(actualTitle6, expectedTitle6, "Title does not match!");
+            System.out.println("Section title is: " + actualTitle6);
+        }catch (Exception e){
+            System.out.println(expectedTitle6 + "section is not available at the moment.");
+        }
 
         String expectedTitle7 = "Gifts in Video Games under $30";
         try{
