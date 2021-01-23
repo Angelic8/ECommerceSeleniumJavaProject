@@ -25,6 +25,16 @@ public class Category extends Homepage {
 
     } // end method clickLinkShopByCat()
 
+    public void viewCategory(){
+
+        // Page title
+        String expectedTitle = "International Best Sellers | Amazon.com";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
+        System.out.println("Page title: " + actualTitle);
+
+    } // end method viewCategory()
+
     public void viewLeftNavBrowseBox(){
 
         element = driver.findElement(leftNavBrowseBox_catPage);

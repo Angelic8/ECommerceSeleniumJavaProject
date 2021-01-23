@@ -54,12 +54,7 @@ public class ECommerceTestCases {
     @Test
     public void aTestHomepage() {
 
-        // Page title
-        String expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
-        System.out.println("Page title: " + actualTitle);
-
+        homepageObj.viewHomepage();
         homepageObj.clickDismissBtnHome();
         homepageObj.clickNavLinks();
         homepageObj.clickNavHamMenu();
@@ -72,13 +67,7 @@ public class ECommerceTestCases {
     public void bTestCategoryPage(){
 
         categoryObj.clickLinkShopByCat();
-
-        // Page title
-        String expectedTitle = "International Best Sellers | Amazon.com";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
-        System.out.println("Page title: " + actualTitle);
-
+        categoryObj.viewCategory();
         categoryObj.viewLeftNavBrowseBox();
 
     } // end method bTestCategoryPage
@@ -86,20 +75,8 @@ public class ECommerceTestCases {
     @Test
     public void cTestProductPage(){
 
-        // Page title
-        String expectedTitle = "International Shopping: Shop Computers that Ship Internationally";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
-        System.out.println("Page title: " + actualTitle);
-
+        productObj.viewProduct();
         productObj.clickProductBestSeller();
-
-        // Product Page title
-        String expectedTitle1 = "Amazon.com: Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver: Computers & Accessories";
-        String actualTitle1 = driver.getTitle();
-        Assert.assertEquals(actualTitle1, expectedTitle1, "Product page title does not match!");
-        System.out.println("Product page title: " + actualTitle1);
-
         productObj.viewProductBestSeller();
         productObj.clickAddToCartConfirmWindow();
 
@@ -108,14 +85,10 @@ public class ECommerceTestCases {
     @Test
     public void dTestLoginPage(){
 
-        // Page title
-        String expectedTitle = "Amazon Sign-In";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
-        System.out.println("Page title: " + actualTitle);
-
-        loginObj.viewLogin();
+        loginObj.viewLoginUsername();
         loginObj.inputUserCredentials();
+        loginObj.viewLoginPassword();
+        loginObj.inputPasswordCredentials();
 
     } // end method cTestLoginPage()
 

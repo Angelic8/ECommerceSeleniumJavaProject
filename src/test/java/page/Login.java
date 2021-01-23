@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Base64;
 
 public class Login extends Homepage {
 
@@ -17,8 +18,16 @@ public class Login extends Homepage {
     By needHelpLink_login = By.xpath("//span[contains(text(),'Need help?')]");
     By createAcctTxt_login = By.xpath("//h5[contains(text(),'New to Amazon?')]");
     By createAcctBtn_login = By.xpath("//a[@id='createAccountSubmit']");
+    By userData_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large div.a-row.a-spacing-base > span:nth-child(1)");
+    By changeClaimLink_login = By.xpath("//a[@id='ap_change_login_claim']");
+    By passwordTxt_login = By.xpath("//label[contains(text(),'Password')]");
+    By userPasswordInput_login = By.xpath("//input[@id='ap_password']");
+    By signInSubmitBtn_login = By.xpath("//input[@id='signInSubmit']");
+    By forgotPasswordLink_login = By.xpath("//a[@id='auth-fpp-link-bottom']");
+    By rememberMeChkbox_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large form.auth-validate-form.auth-real-time-validation.a-spacing-none div.a-section:nth-child(8) div.a-section:nth-child(7) div.a-row.a-spacing-top-medium:nth-child(4) div.a-section.a-text-left label.a-form-label div.a-checkbox label:nth-child(1) > input:nth-child(1)");
+    By rememberMeTxt_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large form.auth-validate-form.auth-real-time-validation.a-spacing-none div.a-section:nth-child(8) div.a-section:nth-child(7) div.a-row.a-spacing-top-medium:nth-child(4) div.a-section.a-text-left label.a-form-label div.a-checkbox label:nth-child(1) > span.a-label.a-checkbox-label:nth-child(3)");
 
-    public void viewLogin(){
+    public void viewLoginUsername(){
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -26,7 +35,13 @@ public class Login extends Homepage {
         String actualSignIn = element.getText();
         String expectedSignIn = "Sign-In";
         Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
-        System.out.println("Title is: " + actualSignIn);
+        System.out.println("Section title is: " + actualSignIn);
+
+        // Page title
+        String expectedTitle = "Amazon Sign-In";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
+        System.out.println("Page title: " + actualTitle);
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(legalTxt_login));
         String actualLegal = element.getText();
@@ -44,7 +59,7 @@ public class Login extends Homepage {
         String actualCreateAcctTxt = element.getText();
         String expectedCreateAcctTxt = "New to Amazon?";
         Assert.assertEquals(actualCreateAcctTxt, expectedCreateAcctTxt, "Text does not match!");
-        System.out.println("Text is: " + actualCreateAcctTxt);
+        System.out.println("Create new account text is: " + actualCreateAcctTxt);
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(createAcctBtn_login));
         System.out.println("Create your amazon account button is available.");
@@ -53,9 +68,9 @@ public class Login extends Homepage {
         String actualEmailOrPhoneNum = element.getText();
         String expectedEmailOrPhoneNum = "Email or mobile phone number";
         Assert.assertEquals(actualEmailOrPhoneNum, expectedEmailOrPhoneNum, "Input label does not match!");
-        System.out.println("Title is: " + actualEmailOrPhoneNum);
+        System.out.println("Input title is: " + actualEmailOrPhoneNum);
 
-    } // end method viewLogin()
+    } // end method viewLoginUsername()
 
     public void inputUserCredentials(){
 
@@ -70,5 +85,63 @@ public class Login extends Homepage {
         System.out.println("Continue button is clicked.");
 
     } // end method inputUserCredentials()
+
+    public void viewLoginPassword(){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
+        String actualSignIn = element.getText();
+        String expectedSignIn = "Sign-In";
+        Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
+        System.out.println("Section title is: " + actualSignIn);
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(userData_login));
+        String actualUserData = element.getText();
+        String expectedUserData = "gabbieeneko@gmail.com";
+        Assert.assertEquals(actualUserData, expectedUserData, "Username does not match!");
+        System.out.println("Username is: " + actualUserData);
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(changeClaimLink_login));
+        String actualChangeClaimLink = element.getText();
+        String expectChangeClaimLink = "Change";
+        Assert.assertEquals(actualChangeClaimLink, expectChangeClaimLink, "Link does not match!");
+        System.out.println("Link is: " + actualChangeClaimLink);
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(forgotPasswordLink_login));
+        String actualForgotPasswordLink = element.getText();
+        String expectForgotPasswordLink = "Forgot your password?";
+        Assert.assertEquals(actualForgotPasswordLink, expectForgotPasswordLink, "Link does not match!");
+        System.out.println("Link is: " + actualForgotPasswordLink);
+
+    } // end method viewLoginPassword()
+
+    public void inputPasswordCredentials(){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordTxt_login));
+        String actualPasswordTxt = element.getText();
+        String expectPasswordTxt = "Password";
+        Assert.assertEquals(actualPasswordTxt, expectPasswordTxt, "Label does not match!");
+        System.out.println("Label is: " + actualPasswordTxt);
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(userPasswordInput_login));
+        element.sendKeys("FuRrP@sSc0d3202!");
+        System.out.println("Password is entered.");
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeChkbox_login));
+        element.click();
+        System.out.println("Keep me signed in checkbox is checked.");
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeTxt_login));
+        String actualRememberMeTxt = element.getText();
+        String expectedRememberMeTxt = "Keep me signed in.";
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(signInSubmitBtn_login));
+        element.click();
+        System.out.println("Sign in submit button is clicked.");
+
+    } // end method inputPasswordCredentials()
 
 } // end method Login

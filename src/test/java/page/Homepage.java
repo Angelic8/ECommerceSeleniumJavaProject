@@ -22,71 +22,81 @@ public class Homepage {
         Homepage.driver = driver;
     } // end manual setter setWebDriver
 
-    By searchField_homePage = By.id("twotabsearchtextbox");
-    By dismissBtn_homePage = By.className("a-button-inner");
-    By navLinks1_homePage = By.xpath("//a[contains(text(),\"Today's Deals\")]");
-    By navLinks2_homePage = By.xpath("//a[contains(text(),'Customer Service')]");
-    By navLinks3_homePage = By.xpath("//a[contains(text(),'Gift Cards')]");
-    By navLinks4_homePage = By.xpath("//header/div[@id='navbar']/div[@id='nav-main']/div[2]/div[2]/div[1]/a[4]");
-    By navLinks5_homePage = By.xpath("//a[contains(text(),'Registry')]");
-    By navHamMenu_homePage = By.id("nav-hamburger-menu");
-    By navHamMenuTitle1_homePage = By.xpath("//div[contains(text(),'digital content & devices')]");
-    By navHamMenuTitle2_homePage = By.xpath("//div[contains(text(),'shop by department')]");
-    By navHamMenuTitle3_homePage = By.xpath("//div[contains(text(),'programs & features')]");
-    By navHamMenuTitle4_homePage = By.xpath("//div[contains(text(),'help & settings')]");
-    By navHamMenuClose_homePage = By.xpath("//body/div[@id='hmenu-container']/div[@id='hmenu-canvas-background']/div[1]");
-    By sectionShopCategory_homePage = By.xpath("//h2[contains(text(),'Shop by Category')]");
-    By sectionShopCategories_homePage = By.xpath("//h2[contains(text(),'Shop top categories')]");
-    By sectionDiscoverSite_homePage = By.xpath("//span[contains(text(),'Discover Amazon')]");
-    By sectionTopBeautyProd_homePage = By.xpath("//span[contains(text(),'Top Beauty & Personal Care products')]");
-    By sectionTopSellers_homePage = By.xpath("//span[contains(text(),'Amazon Top Sellers')]");
-    By sectionComfyStyles_homePage = By.xpath("//h2[contains(text(),'Comfy styles for her')]");
-    By sectionGifts_homePage = By.xpath("//span[contains(text(),'Gifts in Video Games under $30')]");
-    By sectionMustHave_homePage = By.xpath("//span[contains(text(),'Must have Wireless products')]");
-    By sectionStuffedToys_homePage = By.xpath("//span[contains(text(),'Stuffed Animals & Toys under $10')]");
-    By sectionBestSellers_homePage = By.xpath("//span[contains(text(),'Best Sellers in Baby')]");
-    By sectionFavToys_homePage = By.xpath("//span[contains(text(),'Our favorite Toys')]");
+    By searchField_home = By.id("twotabsearchtextbox");
+    By dismissBtn_home = By.className("a-button-inner");
+    By navLinks1_home = By.xpath("//a[contains(text(),\"Today's Deals\")]");
+    By navLinks2_home = By.xpath("//a[contains(text(),'Customer Service')]");
+    By navLinks3_home = By.xpath("//a[contains(text(),'Gift Cards')]");
+    By navLinks4_home = By.xpath("//header/div[@id='navbar']/div[@id='nav-main']/div[2]/div[2]/div[1]/a[4]");
+    By navLinks5_home = By.xpath("//a[contains(text(),'Registry')]");
+    By navHamMenu_home = By.id("nav-hamburger-menu");
+    By navHamMenuTitle1_home = By.xpath("//div[contains(text(),'digital content & devices')]");
+    By navHamMenuTitle2_home = By.xpath("//div[contains(text(),'shop by department')]");
+    By navHamMenuTitle3_home = By.xpath("//div[contains(text(),'programs & features')]");
+    By navHamMenuTitle4_home = By.xpath("//div[contains(text(),'help & settings')]");
+    By navHamMenuClose_home = By.xpath("//body/div[@id='hmenu-container']/div[@id='hmenu-canvas-background']/div[1]");
+    By sectionShopCategory_home = By.xpath("//h2[contains(text(),'Shop by Category')]");
+    By sectionShopCategories_home = By.xpath("//h2[contains(text(),'Shop top categories')]");
+    By sectionDiscoverSite_home = By.xpath("//span[contains(text(),'Discover Amazon')]");
+    By sectionTopBeautyProd_home = By.xpath("//span[contains(text(),'Top Beauty & Personal Care products')]");
+    By sectionTopSellers_home = By.xpath("//span[contains(text(),'Amazon Top Sellers')]");
+    By sectionComfyStyles_home = By.xpath("//h2[contains(text(),'Comfy styles for her')]");
+    By sectionGifts_home = By.xpath("//span[contains(text(),'Gifts in Video Games under $30')]");
+    By sectionMustHave_home = By.xpath("//span[contains(text(),'Must have Wireless products')]");
+    By sectionStuffedToys_home = By.xpath("//span[contains(text(),'Stuffed Animals & Toys under $10')]");
+    By sectionBestSellers_home = By.xpath("//span[contains(text(),'Best Sellers in Baby')]");
+    By sectionFavToys_home = By.xpath("//span[contains(text(),'Our favorite Toys')]");
+
+    public void viewHomepage(){
+
+        // Page title
+        String expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
+        System.out.println("Page title: " + actualTitle);
+
+    } // end method viewHomepage()
 
     public void enterSearchFieldHome(String text) {
 
-        driver.findElement(searchField_homePage).sendKeys(text);
+        driver.findElement(searchField_home).sendKeys(text);
 
     } // end method enterSearchFieldHome
 
     public void clickDismissBtnHome() {
 
-        driver.findElement(dismissBtn_homePage).click();
+        driver.findElement(dismissBtn_home).click();
         System.out.println("Shipping Address Dismiss Button is clicked.");
 
     } // end method clickDismissBtnHome
 
     public void clickNavLinks() {
 
-        element = driver.findElement(navLinks1_homePage);
+        element = driver.findElement(navLinks1_home);
         String actualTitle1 = element.getText();
         String expectedTitle1 = "Today's Deals";
         Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
         System.out.println("First navigation title is: " + actualTitle1);
 
-        element = driver.findElement(navLinks2_homePage);
+        element = driver.findElement(navLinks2_home);
         String actualTitle2 = element.getText();
         String expectedTitle2 = "Customer Service";
         Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
         System.out.println("Second navigation title is: " + actualTitle2);
 
-        element = driver.findElement(navLinks3_homePage);
+        element = driver.findElement(navLinks3_home);
         String actualTitle3 = element.getText();
         String expectedTitle3 = "Gift Cards";
         Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
         System.out.println("Third navigation title is: " + actualTitle3);
 
-        element = driver.findElement(navLinks4_homePage);
+        element = driver.findElement(navLinks4_home);
         String actualTitle4 = element.getText();
         String expectedTitle4 = "Sell";
         Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
         System.out.println("Fourth navigation title is: " + actualTitle4);
 
-        element = driver.findElement(navLinks5_homePage);
+        element = driver.findElement(navLinks5_home);
         String actualTitle5 = element.getText();
         String expectedTitle5 = "Registry";
         Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
@@ -98,12 +108,12 @@ public class Homepage {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        driver.findElement(navHamMenu_homePage).click();
+        driver.findElement(navHamMenu_home).click();
         System.out.println("\nHamburger menu is clicked.");
 
         String expectedTitle1 = "Digital Content & Devices";
         try{
-            element = driver.findElement(navHamMenuTitle1_homePage);
+            element = driver.findElement(navHamMenuTitle1_home);
             String actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
             System.out.println("Navigation menu title is: " + actualTitle1);
@@ -113,7 +123,7 @@ public class Homepage {
 
         String expectedTitle2 = "Shop By Department";
         try{
-            element = driver.findElement(navHamMenuTitle2_homePage);
+            element = driver.findElement(navHamMenuTitle2_home);
             String actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
             System.out.println("Navigation menu title is: " + actualTitle2);
@@ -125,7 +135,7 @@ public class Homepage {
         //((JavascriptExecutor) driver).executeScript("javascript:window.scrollBy(0,350)", element);
         String expectedTitle3 = "Programs & Features";
         try{
-            element = driver.findElement(navHamMenuTitle3_homePage);
+            element = driver.findElement(navHamMenuTitle3_home);
             String actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
             System.out.println("Navigation menu title is: " + actualTitle3);
@@ -135,7 +145,7 @@ public class Homepage {
 
         String expectedTitle4 = "Help & Settings";
         try{
-            element = driver.findElement(navHamMenuTitle4_homePage);
+            element = driver.findElement(navHamMenuTitle4_home);
             String actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
             System.out.println("Navigation menu title is: " + actualTitle4);
@@ -143,7 +153,7 @@ public class Homepage {
             System.out.println(expectedTitle4 + " navigation menu title is not available at the moment.");
         }
 
-        element = wait.until(ExpectedConditions.elementToBeClickable(navHamMenuClose_homePage));
+        element = wait.until(ExpectedConditions.elementToBeClickable(navHamMenuClose_home));
         element.click();
         System.out.println("Hamburger menu close button is clicked.");
 
@@ -156,7 +166,7 @@ public class Homepage {
 
         String expectedTitle1 = "Shop by Category";
         try{
-            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategory_homePage));
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategory_home));
             String actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
             System.out.println("\nSection title is: " + actualTitle1);
@@ -166,7 +176,7 @@ public class Homepage {
 
         String expectedTitle2 = "Shop top categories";
         try{
-            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategories_homePage));
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategories_home));
             //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             String actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
@@ -177,7 +187,7 @@ public class Homepage {
 
         String expectedTitle3 = "Discover Amazon";
         try{
-            element = driver.findElement(sectionDiscoverSite_homePage);
+            element = driver.findElement(sectionDiscoverSite_home);
             //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             String actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
@@ -188,7 +198,7 @@ public class Homepage {
 
         String expectedTitle4 = "Top Beauty & Personal Care products";
         try{
-            element = driver.findElement(sectionTopBeautyProd_homePage);
+            element = driver.findElement(sectionTopBeautyProd_home);
             String actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
             System.out.println("Section title is: " + actualTitle4);
@@ -198,7 +208,7 @@ public class Homepage {
 
         String expectedTitle5 = "Amazon Top Sellers";
         try{
-            element = driver.findElement(sectionTopSellers_homePage);
+            element = driver.findElement(sectionTopSellers_home);
             String actualTitle5 = element.getText();
             Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
             System.out.println("Section title is: " + actualTitle5);
@@ -208,7 +218,7 @@ public class Homepage {
 
         String expectedTitle6 = "Comfy styles for her";
         try{
-            element = driver.findElement(sectionComfyStyles_homePage);
+            element = driver.findElement(sectionComfyStyles_home);
             String actualTitle6 = element.getText();
             Assert.assertEquals(actualTitle6, expectedTitle6, "Title does not match!");
             System.out.println("Section title is: " + actualTitle6);
@@ -218,7 +228,7 @@ public class Homepage {
 
         String expectedTitle7 = "Gifts in Video Games under $30";
         try{
-            element = driver.findElement(sectionGifts_homePage);
+            element = driver.findElement(sectionGifts_home);
             String actualTitle7 = element.getText();
             Assert.assertEquals(actualTitle7, expectedTitle7, "Title does not match!");
             System.out.println("Section title is: " + actualTitle7);
@@ -228,7 +238,7 @@ public class Homepage {
 
         String expectedTitle8 = "Must have Wireless products";
         try{
-            element = driver.findElement(sectionMustHave_homePage);
+            element = driver.findElement(sectionMustHave_home);
             String actualTitle8 = element.getText();
             Assert.assertEquals(actualTitle8, expectedTitle8, "Title does not match!");
             System.out.println("Section title is: " + actualTitle8);
@@ -238,7 +248,7 @@ public class Homepage {
 
         String expectedTitle9 = "Stuffed Animals & Toys under $10";
         try{
-            element = driver.findElement(sectionStuffedToys_homePage);
+            element = driver.findElement(sectionStuffedToys_home);
             String actualTitle9 = element.getText();
             Assert.assertEquals(actualTitle9, expectedTitle9, "Title does not match!");
             System.out.println("Section title is: " + actualTitle9);
@@ -248,7 +258,7 @@ public class Homepage {
 
         String expectedTitle10 = "Best Sellers in Baby";
         try{
-            element = driver.findElement(sectionBestSellers_homePage);
+            element = driver.findElement(sectionBestSellers_home);
             String actualTitle10 = element.getText();
             Assert.assertEquals(actualTitle10, expectedTitle10, "Title does not match!");
             System.out.println("Section title is: " + actualTitle10);
@@ -258,7 +268,7 @@ public class Homepage {
 
         String expectedTitle11 = "Our favorite Toys";
         try{
-            element = driver.findElement(sectionFavToys_homePage);
+            element = driver.findElement(sectionFavToys_home);
             String actualTitle11 = element.getText();
             Assert.assertEquals(actualTitle11, expectedTitle11, "Title does not match!");
             System.out.println("Section title is: " + actualTitle11);
