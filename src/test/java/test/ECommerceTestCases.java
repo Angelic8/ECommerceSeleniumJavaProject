@@ -10,6 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import page.*;
 
+import java.io.FileNotFoundException;
+
 public class ECommerceTestCases {
 
     // tools
@@ -61,15 +63,14 @@ public class ECommerceTestCases {
         homepageObj.viewSections();
 
     } // end method aTestHomepage
-
+/*
     @Test
     public void bTestSearchAndSearchResults(){
 
         searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
 
     } // end method bTestSearchAndSearchResults()
-
-    /*
+*/
     @Test
     public void cTestCategoryPage(){
 
@@ -90,16 +91,15 @@ public class ECommerceTestCases {
     } // end method cTestProductPage()
 
     @Test
-    public void eTestLoginPage(){
+    public void eTestLoginPage() throws FileNotFoundException {
 
+        //loginObj.clickAccountList();
         loginObj.viewLoginUsername();
         loginObj.inputUserCredentials();
         loginObj.viewLoginPassword();
         loginObj.inputPasswordCredentials();
 
     } // end method cTestLoginPage()
-    */
-
 
     @AfterTest
     public void quitBrowser() {

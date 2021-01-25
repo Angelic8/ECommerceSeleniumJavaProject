@@ -5,11 +5,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.FileNotFoundException;
 import java.time.Duration;
-import java.util.Base64;
 
 public class Login extends Homepage {
 
+    protected static ReadTextFiles readTextFilesObj;
+
+    By acctListsLink_login = By.cssSelector("#nav-link-accountList");
     By signIn_login = By.xpath("//h1[contains(text(),'Sign-In')]");
     By emailOrPhoneNum_login = By.xpath("//label[contains(text(),'Email or mobile phone number')]");
     By emailOrPhoneNumInput_login = By.xpath("//input[@id='ap_email']");
@@ -24,9 +27,15 @@ public class Login extends Homepage {
     By userPasswordInput_login = By.xpath("//input[@id='ap_password']");
     By signInSubmitBtn_login = By.xpath("//input[@id='signInSubmit']");
     By forgotPasswordLink_login = By.xpath("//a[@id='auth-fpp-link-bottom']");
-    By rememberMeChkbox_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large form.auth-validate-form.auth-real-time-validation.a-spacing-none div.a-section:nth-child(8) div.a-section:nth-child(7) div.a-row.a-spacing-top-medium:nth-child(4) div.a-section.a-text-left label.a-form-label div.a-checkbox label:nth-child(1) > input:nth-child(1)");
-    By rememberMeTxt_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large form.auth-validate-form.auth-real-time-validation.a-spacing-none div.a-section:nth-child(8) div.a-section:nth-child(7) div.a-row.a-spacing-top-medium:nth-child(4) div.a-section.a-text-left label.a-form-label div.a-checkbox label:nth-child(1) > span.a-label.a-checkbox-label:nth-child(3)");
+    By rememberMeChkbox_login = By.name("rememberMe");
+    By rememberMeTxt_login = By.className("a-checkbox-label");
+/*
+    public void clickAccountList(){
 
+        driver.findElement(acctListsLink_login).click();
+
+    } // end method clickAccountList()
+*/
     public void viewLoginUsername(){
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -72,12 +81,13 @@ public class Login extends Homepage {
 
     } // end method viewLoginUsername()
 
-    public void inputUserCredentials(){
+    public void inputUserCredentials() throws FileNotFoundException {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        readTextFilesObj = new ReadTextFiles();
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailOrPhoneNumInput_login));
-        element.sendKeys("gabbieeneko@gmail.com");
+        element.sendKeys(readTextFilesObj.getUsername());
         System.out.println("Email or phone number input field is available and data is entered.");
 
         element = wait.until(ExpectedConditions.elementToBeClickable(continueBtn_login));
@@ -86,9 +96,10 @@ public class Login extends Homepage {
 
     } // end method inputUserCredentials()
 
-    public void viewLoginPassword(){
+    public void viewLoginPassword() throws FileNotFoundException {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        readTextFilesObj = new ReadTextFiles();
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
         String actualSignIn = element.getText();
@@ -98,7 +109,7 @@ public class Login extends Homepage {
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(userData_login));
         String actualUserData = element.getText();
-        String expectedUserData = "gabbieeneko@gmail.com";
+        String expectedUserData = readTextFilesObj.getUsername();
         Assert.assertEquals(actualUserData, expectedUserData, "Username does not match!");
         System.out.println("Username is: " + actualUserData);
 
@@ -116,9 +127,10 @@ public class Login extends Homepage {
 
     } // end method viewLoginPassword()
 
-    public void inputPasswordCredentials(){
+    public void inputPasswordCredentials() throws FileNotFoundException {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        readTextFilesObj = new ReadTextFiles();
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordTxt_login));
         String actualPasswordTxt = element.getText();
@@ -127,12 +139,11 @@ public class Login extends Homepage {
         System.out.println("Label is: " + actualPasswordTxt);
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(userPasswordInput_login));
-        element.sendKeys("FuRrP@sSc0d3202!");
+        element.sendKeys(readTextFilesObj.getPassword());
         System.out.println("Password is entered.");
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeChkbox_login));
-        element.click();
-        System.out.println("Keep me signed in checkbox is checked.");
+        System.out.println("Keep me signed in checkbox is available.");
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeTxt_login));
         String actualRememberMeTxt = element.getText();
