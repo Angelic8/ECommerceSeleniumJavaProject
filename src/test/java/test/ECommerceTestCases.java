@@ -8,10 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import page.Category;
-import page.Homepage;
-import page.Login;
-import page.Product;
+import page.*;
 
 public class ECommerceTestCases {
 
@@ -27,6 +24,7 @@ public class ECommerceTestCases {
     protected static Category categoryObj;
     protected static Product productObj;
     protected static Login loginObj;
+    protected static SearchAndSearchResults searchAndSearchResultsObj;
 
     @BeforeTest
     public void setupTest() {
@@ -49,6 +47,8 @@ public class ECommerceTestCases {
         loginObj = new Login();
         loginObj.setWebDriver(driver);
 
+        searchAndSearchResultsObj = new SearchAndSearchResults();
+        searchAndSearchResultsObj.setWebDriver(driver);
     } // end method setupTest()
 
     @Test
@@ -59,12 +59,19 @@ public class ECommerceTestCases {
         homepageObj.clickNavLinks();
         homepageObj.clickNavHamMenu();
         homepageObj.viewSections();
-        //homepageObj.enterSearchFieldHome("Laptop");
 
     } // end method aTestHomepage
 
     @Test
-    public void bTestCategoryPage(){
+    public void bTestSearchAndSearchResults(){
+
+        searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
+
+    } // end method bTestSearchAndSearchResults()
+
+    /*
+    @Test
+    public void cTestCategoryPage(){
 
         categoryObj.clickLinkShopByCat();
         categoryObj.viewCategory();
@@ -73,7 +80,7 @@ public class ECommerceTestCases {
     } // end method bTestCategoryPage
 
     @Test
-    public void cTestProductPage(){
+    public void dTestProductPage(){
 
         productObj.viewProduct();
         productObj.clickProductBestSeller();
@@ -83,7 +90,7 @@ public class ECommerceTestCases {
     } // end method cTestProductPage()
 
     @Test
-    public void dTestLoginPage(){
+    public void eTestLoginPage(){
 
         loginObj.viewLoginUsername();
         loginObj.inputUserCredentials();
@@ -91,7 +98,7 @@ public class ECommerceTestCases {
         loginObj.inputPasswordCredentials();
 
     } // end method cTestLoginPage()
-
+    */
 
 
     @AfterTest

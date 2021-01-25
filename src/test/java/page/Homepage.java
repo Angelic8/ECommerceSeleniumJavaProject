@@ -22,7 +22,6 @@ public class Homepage {
         Homepage.driver = driver;
     } // end manual setter setWebDriver
 
-    By searchField_home = By.id("twotabsearchtextbox");
     By dismissBtn_home = By.className("a-button-inner");
     By navLinks1_home = By.xpath("//a[contains(text(),\"Today's Deals\")]");
     By navLinks2_home = By.xpath("//a[contains(text(),'Customer Service')]");
@@ -56,12 +55,6 @@ public class Homepage {
         System.out.println("Page title: " + actualTitle);
 
     } // end method viewHomepage()
-
-    public void enterSearchFieldHome(String text) {
-
-        driver.findElement(searchField_home).sendKeys(text);
-
-    } // end method enterSearchFieldHome
 
     public void clickDismissBtnHome() {
 
