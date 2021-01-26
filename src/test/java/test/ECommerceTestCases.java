@@ -55,7 +55,7 @@ public class ECommerceTestCases {
 
     @Test
     public void aTestHomepage() {
-
+        // home
         homepageObj.viewHomepage();
         homepageObj.clickDismissBtnHome();
         homepageObj.clickNavLinks();
