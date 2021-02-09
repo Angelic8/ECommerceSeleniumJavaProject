@@ -51,26 +51,29 @@ public class ECommerceTestCases {
 
         searchAndSearchResultsObj = new SearchAndSearchResults();
         searchAndSearchResultsObj.setWebDriver(driver);
+
     } // end method setupTest()
 
-    @Test
+    @Test(priority = 1)
     public void aTestHomepage() {
         // homepage
-        homepageObj.viewHomepage();
+        //homepageObj.viewHomepage();
         homepageObj.clickDismissBtnHome();
-        homepageObj.clickNavLinks();
+/*        homepageObj.clickNavLinks();
         homepageObj.clickNavHamMenu();
         homepageObj.viewSections();
-
+*/
     } // end method aTestHomepage
-/*
-    @Test
+
+    @Test(priority = 2)
     public void bTestSearchAndSearchResults(){
 
         searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
+        searchAndSearchResultsObj.viewListResults();
 
     } // end method bTestSearchAndSearchResults()
-*/
+
+/*
     @Test
     public void cTestCategoryPage(){
 
@@ -100,7 +103,7 @@ public class ECommerceTestCases {
         loginObj.inputPasswordCredentials();
 
     } // end method cTestLoginPage()
-
+*/
     @AfterTest
     public void quitBrowser() {
 

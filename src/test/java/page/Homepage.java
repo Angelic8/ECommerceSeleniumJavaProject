@@ -57,8 +57,9 @@ public class Homepage {
     } // end method viewHomepage()
 
     public void clickDismissBtnHome() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        driver.findElement(dismissBtn_home).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dismissBtn_home)).click();
         System.out.println("Shipping Address Dismiss Button is clicked.");
 
     } // end method clickDismissBtnHome

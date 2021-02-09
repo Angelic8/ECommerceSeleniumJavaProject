@@ -76,7 +76,7 @@ public class Product extends Homepage{
         try{
             element = driver.findElement(prodDeliveryDate_product);
             String actualDeliveryDate = element.getText();
-            String expectedDeliveryDate = "Arrives: Feb 2 - March 16";
+            String expectedDeliveryDate = "Arrives: Feb 3 - March 17";
             Assert.assertEquals(actualDeliveryDate, expectedDeliveryDate, "Delivery date does not match!");
             System.out.println("Delivery date is: " + expectedDeliveryDate);
         } catch (Exception e){
