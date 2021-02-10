@@ -14,6 +14,9 @@ public class SearchAndSearchResults extends Homepage {
     By searchField_home = By.id("twotabsearchtextbox");
     By searchBtn_home = By.id("nav-search-submit-button");
     By list_searchResults = By.xpath("//*[@class='a-size-medium a-color-base a-text-normal']");
+    By list_viewResults = By.className("s-line-clamp-2");
+    By list_countResults = By.xpath("/html[1]/body[1]/div[1]/div[2]/span[1]/div[1]/span[1]/h1[1]/div[1]/div[1]/div[1]/div[1]/span[1]");
+    By list_searchTerm = By.xpath("/html[1]/body[1]/div[1]/div[2]/span[1]/div[1]/span[1]/h1[1]/div[1]/div[1]/div[1]/div[1]/span[3]");
 
     public void enterSearchFieldHome(String text) {
 
@@ -27,29 +30,40 @@ public class SearchAndSearchResults extends Homepage {
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(list_searchResults));
         String searchList = element.getText();
-        System.out.println("\nResult: " + searchList);
+        System.out.println("\nFirst Search Result: " + searchList);
 
     } // end method enterSearchFieldHome
 
     public void viewListResults(){
 
-        List<WebElement> test = driver.findElements(By.className("s-line-clamp-2"));
-        int countDiv = test.size();
-        int number = 1;
+        List<WebElement> test;
+        int countDiv, number;
+        WebElement count, searchTerm;
+        String countTotal, searchTermText, value;
 
-        System.out.println("Div size: " + countDiv);
+        number = 1;
+        test = driver.findElements(list_viewResults);
+        countDiv = test.size();
+        count = driver.findElement(list_countResults);
+        countTotal = count.getText();
+        searchTerm = driver.findElement(list_searchTerm);
+        searchTermText = searchTerm.getText();
+
         System.out.println("Title: " + test);
+        System.out.println("Div size: " + countDiv);
+        System.out.println("Total count: " + countTotal + " " + searchTermText);
         System.out.println("\nSearch Results: ");
 
         // Used to print matching results
         for (WebElement results: test){
 
-            String value = results.getText();
+            value = results.getText();
+
             if (value == null || value.length() == 0){
                 System.out.println("Null");
             } else{
                 System.out.println(number++ + " Value: " + value);
-            }
+            } // end if-else
 
         } // end for-loop
 

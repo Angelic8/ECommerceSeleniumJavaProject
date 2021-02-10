@@ -73,6 +73,25 @@ public class ECommerceTestCases {
         searchAndSearchResultsObj.clearFields();
         searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
         searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Keyboard");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("PC");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Desktop Processor");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Motherboard");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Ram");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
 
     } // end method bTestSearchAndSearchResults()
 
