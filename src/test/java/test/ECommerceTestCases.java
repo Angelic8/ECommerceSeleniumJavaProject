@@ -70,6 +70,9 @@ public class ECommerceTestCases {
 
         searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
         searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
+        searchAndSearchResultsObj.viewListResults();
 
     } // end method bTestSearchAndSearchResults()
 

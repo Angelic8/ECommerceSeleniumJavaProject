@@ -15,8 +15,8 @@ public class SearchAndSearchResults extends Homepage {
     By searchBtn_home = By.id("nav-search-submit-button");
     By list_searchResults = By.xpath("//*[@class='a-size-medium a-color-base a-text-normal']");
 
-
     public void enterSearchFieldHome(String text) {
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         element = driver.findElement(searchField_home);
@@ -27,7 +27,7 @@ public class SearchAndSearchResults extends Homepage {
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(list_searchResults));
         String searchList = element.getText();
-        System.out.println("Result: " + searchList);
+        System.out.println("\nResult: " + searchList);
 
     } // end method enterSearchFieldHome
 
@@ -40,15 +40,28 @@ public class SearchAndSearchResults extends Homepage {
         System.out.println("Title: " + test);
         System.out.println("\nSearch Results: ");
 
+        int number = 1;
         // Used to print matching results
         for (WebElement results: test){
 
             String value = results.getText();
-            System.out.println("Value: " + value);
+            if (value.length() == 0){
+                System.out.println("Null");
+            } else{
+                System.out.println(number++ + " Value: " + value);
+            }
 
         } // end for-loop
 
     } // end method viewListResults()
 
+    public void clearFields(){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        element = driver.findElement(searchField_home);
+        element.clear();
+
+    } // end method clearFields()
 
 } // end method SearchAndSearchResults
