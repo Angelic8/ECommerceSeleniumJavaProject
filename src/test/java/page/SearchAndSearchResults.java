@@ -35,17 +35,17 @@ public class SearchAndSearchResults extends Homepage {
 
         List<WebElement> test = driver.findElements(By.className("s-line-clamp-2"));
         int countDiv = test.size();
+        int number = 1;
 
         System.out.println("Div size: " + countDiv);
         System.out.println("Title: " + test);
         System.out.println("\nSearch Results: ");
 
-        int number = 1;
         // Used to print matching results
         for (WebElement results: test){
 
             String value = results.getText();
-            if (value.length() == 0){
+            if (value == null || value.length() == 0){
                 System.out.println("Null");
             } else{
                 System.out.println(number++ + " Value: " + value);
