@@ -92,7 +92,7 @@ public class ECommerceTestCases {
         searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
         searchAndSearchResultsObj.viewListResults();
         searchAndSearchResultsObj.clearFields();
-
+        
     } // end method bTestSearchAndSearchResults()
 
 /*
