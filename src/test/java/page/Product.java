@@ -66,7 +66,7 @@ public class Product extends Homepage{
         try{
             element = driver.findElement(prodShippingImportFees_product);
             String actualShippingImportFees = element.getText();
-            String expectedShippingImportFees = "$118.88 Shipping & Import Fees Deposit to Philippines";
+            String expectedShippingImportFees = "$171.60 Shipping & Import Fees Deposit to Philippines";
             Assert.assertEquals(actualShippingImportFees, expectedShippingImportFees, "Shipping and import fees does not match!");
             System.out.println("Shipping and Import Fees is: " + actualShippingImportFees);
         } catch (Exception e){
@@ -76,7 +76,7 @@ public class Product extends Homepage{
         try{
             element = driver.findElement(prodDeliveryDate_product);
             String actualDeliveryDate = element.getText();
-            String expectedDeliveryDate = "Arrives: Feb 3 - March 17";
+            String expectedDeliveryDate = "Arrives: Feb 23 - April 12";
             Assert.assertEquals(actualDeliveryDate, expectedDeliveryDate, "Delivery date does not match!");
             System.out.println("Delivery date is: " + expectedDeliveryDate);
         } catch (Exception e){

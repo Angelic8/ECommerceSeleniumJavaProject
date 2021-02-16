@@ -5,12 +5,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import page.*;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ECommerceTestCases {
 
@@ -27,12 +30,31 @@ public class ECommerceTestCases {
     protected static Product productObj;
     protected static Login loginObj;
     protected static SearchAndSearchResults searchAndSearchResultsObj;
+    protected static Shipping shippingObj;
 
     @BeforeTest
     public void setupTest() {
 
+        // Push Notifications
+        // 1 - Create a map to store preferences (Chrome)
+        Map<String, Object> prefs = new HashMap<String, Object>();
+
+        // 2- Add key and value to map as follow to switch off browser notification
+        // Pass the argument 1 to allow and 2 to block
+        prefs.put("profile.default_content_setting_values.notifications", 1);
+
+        // 3- Create an instance of ChromeOptions
+        ChromeOptions options = new ChromeOptions();
+
+        // 4 - Set ExperimentalOption - prefs
+        options.setExperimentalOption("prefs", prefs);
+
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
+        // 5 - Now Pass ChromeOptions instance to ChromeDriver Constructor
+        // To initialize chrome driver which will switch off this browser notification on the chrome browser
+        driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
         driver.get(appURL);
         driver.manage().deleteAllCookies();
@@ -52,21 +74,24 @@ public class ECommerceTestCases {
         searchAndSearchResultsObj = new SearchAndSearchResults();
         searchAndSearchResultsObj.setWebDriver(driver);
 
+        shippingObj = new Shipping();
+        shippingObj.setWebDriver(driver);
+
     } // end method setupTest()
 
     @Test(priority = 1)
-    public void aTestHomepage() {
-        // homepage
-        //homepageObj.viewHomepage();
+    public void testHomepage() {
+
+        homepageObj.viewHomepage();
         homepageObj.clickDismissBtnHome();
-/*        homepageObj.clickNavLinks();
+        homepageObj.clickNavLinks();
         homepageObj.clickNavHamMenu();
         homepageObj.viewSections();
-*/
-    } // end method aTestHomepage
+
+    } // end method testHomepage
 
     @Test(priority = 2)
-    public void bTestSearchAndSearchResults(){
+    public void testSearchAndSearchResults(){
 
         searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
         searchAndSearchResultsObj.viewListResults();
@@ -92,31 +117,32 @@ public class ECommerceTestCases {
         searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
         searchAndSearchResultsObj.viewListResults();
         searchAndSearchResultsObj.clearFields();
-        
-    } // end method bTestSearchAndSearchResults()
+        homepageObj.clickHome();
 
-/*
-    @Test
-    public void cTestCategoryPage(){
+    } // end method testSearchAndSearchResults()
+
+
+    @Test(priority = 3)
+    public void testCategoryPage(){
 
         categoryObj.clickLinkShopByCat();
         categoryObj.viewCategory();
         categoryObj.viewLeftNavBrowseBox();
 
-    } // end method bTestCategoryPage
+    } // end method testCategoryPage
 
-    @Test
-    public void dTestProductPage(){
+    @Test(priority = 4)
+    public void testProductPage(){
 
         productObj.viewProduct();
         productObj.clickProductBestSeller();
         productObj.viewProductBestSeller();
         productObj.clickAddToCartConfirmWindow();
 
-    } // end method cTestProductPage()
+    } // end method testProductPage()
 
-    @Test
-    public void eTestLoginPage() throws FileNotFoundException {
+    @Test(priority = 5)
+    public void testLoginPage() throws FileNotFoundException {
 
         //loginObj.clickAccountList();
         loginObj.viewLoginUsername();
@@ -124,8 +150,17 @@ public class ECommerceTestCases {
         loginObj.viewLoginPassword();
         loginObj.inputPasswordCredentials();
 
-    } // end method cTestLoginPage()
-*/
+    } // end method testLoginPage()
+
+    @Test(priority = 6)
+    public void testShipping(){
+
+        shippingObj.viewShipping();
+        shippingObj.addNewAddress();
+
+    } // end method testShipping()
+
+
     @AfterTest
     public void quitBrowser() {
 

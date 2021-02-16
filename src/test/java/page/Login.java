@@ -21,7 +21,7 @@ public class Login extends Homepage {
     By needHelpLink_login = By.xpath("//span[contains(text(),'Need help?')]");
     By createAcctTxt_login = By.xpath("//h5[contains(text(),'New to Amazon?')]");
     By createAcctBtn_login = By.xpath("//a[@id='createAccountSubmit']");
-    By userData_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_157141-c.a-aui_158613-c.a-aui_72554-c.a-aui_dropdown_187959-c.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_tnr_v2_180836-c.a-aui_ux_145937-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large div.a-row.a-spacing-base > span:nth-child(1)");
+    By userData_login = By.cssSelector("body.ap-locale-en_US.a-m-us.a-aui_72554-c.a-aui_mm_desktop_exp_291916-c.a-aui_mm_desktop_launch_291918-c.a-aui_mm_desktop_targeted_exp_291928-t1.a-aui_mm_desktop_targeted_launch_291922-t1.a-aui_pci_risk_banner_210084-c.a-aui_perf_130093-c.a-aui_preload_261698-c.a-aui_rel_noreferrer_noopener_309527-c.a-aui_tnr_v2_180836-c.a-meter-animate:nth-child(2) div.a-section.a-padding-medium.auth-workflow:nth-child(2) div.a-section:nth-child(2) div.a-section div.a-section.auth-pagelet-container:nth-child(2) div.a-section.a-spacing-base div.a-box div.a-box-inner.a-padding-extra-large div.a-row.a-spacing-base > span:nth-child(1)");
     By changeClaimLink_login = By.xpath("//a[@id='ap_change_login_claim']");
     By passwordTxt_login = By.xpath("//label[contains(text(),'Password')]");
     By userPasswordInput_login = By.xpath("//input[@id='ap_password']");

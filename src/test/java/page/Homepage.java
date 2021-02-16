@@ -17,6 +17,7 @@ public class Homepage {
     protected static WebDriverWait wait;
     protected static WebElement element;
     protected JavascriptExecutor js;
+    public static RegexStrings regexStringsObj;
 
     public void setWebDriver(WebDriver driver) {
         Homepage.driver = driver;
@@ -45,18 +46,21 @@ public class Homepage {
     By sectionStuffedToys_home = By.xpath("//span[contains(text(),'Stuffed Animals & Toys under $10')]");
     By sectionBestSellers_home = By.xpath("//span[contains(text(),'Best Sellers in Baby')]");
     By sectionFavToys_home = By.xpath("//span[contains(text(),'Our favorite Toys')]");
+    By homeLogo = By.xpath("//a[@id='nav-logo-sprites']");
 
     public void viewHomepage(){
 
-        // Page title
-        String expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
-        String actualTitle = driver.getTitle();
+        String expectedTitle, actualTitle;
+
+        expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
+        actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
         System.out.println("Page title: " + actualTitle);
 
     } // end method viewHomepage()
 
     public void clickDismissBtnHome() {
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(dismissBtn_home)).click();
@@ -271,5 +275,19 @@ public class Homepage {
         }
 
     } // end method viewSections
+
+    public void clickHome(){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(homeLogo));
+            element.click();
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("\nHome logo is not available at the moment.");
+        }
+
+    } // end method clickHome()
 
 } // end method Homepage
