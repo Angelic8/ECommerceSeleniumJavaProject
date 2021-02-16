@@ -153,7 +153,7 @@ public class ECommerceTestCases {
     } // end method testLoginPage()
 
     @Test(priority = 6)
-    public void testShipping(){
+    public void testShipping() throws InterruptedException {
 
         shippingObj.viewShipping();
         shippingObj.addNewAddress();
