@@ -34,7 +34,7 @@ public class SearchAndSearchResults extends Homepage {
 
     } // end method enterSearchFieldHome
 
-    public void viewListResults(){
+    public void viewListResults() {
 
         List<WebElement> test;
         int countDiv, number;
@@ -55,13 +55,13 @@ public class SearchAndSearchResults extends Homepage {
         System.out.println("\nSearch Results: ");
 
         // Used to print matching results
-        for (WebElement results: test){
+        for (WebElement results : test) {
 
             value = results.getText();
 
-            if (value == null || value.length() == 0){
+            if (value == null || value.length() == 0) {
                 System.out.println("Null");
-            } else{
+            } else {
                 System.out.println(number++ + " Value: " + value);
             } // end if-else
 
@@ -69,7 +69,7 @@ public class SearchAndSearchResults extends Homepage {
 
     } // end method viewListResults()
 
-    public void clearFields(){
+    public void clearFields() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 

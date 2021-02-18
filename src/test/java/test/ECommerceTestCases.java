@@ -91,7 +91,7 @@ public class ECommerceTestCases {
     } // end method testHomepage
 
     @Test(priority = 2)
-    public void testSearchAndSearchResults(){
+    public void testSearchAndSearchResults() {
 
         searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
         searchAndSearchResultsObj.viewListResults();
@@ -123,7 +123,7 @@ public class ECommerceTestCases {
 
 
     @Test(priority = 3)
-    public void testCategoryPage(){
+    public void testCategoryPage() {
 
         categoryObj.clickLinkShopByCat();
         categoryObj.viewCategory();
@@ -132,7 +132,7 @@ public class ECommerceTestCases {
     } // end method testCategoryPage
 
     @Test(priority = 4)
-    public void testProductPage(){
+    public void testProductPage() {
 
         productObj.viewProduct();
         productObj.clickProductBestSeller();
@@ -157,6 +157,7 @@ public class ECommerceTestCases {
 
         shippingObj.viewShipping();
         shippingObj.addNewAddress();
+        shippingObj.viewShippingOptions();
 
     } // end method testShipping()
 

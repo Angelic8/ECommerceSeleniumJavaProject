@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class Product extends Homepage{
+public class Product extends Homepage {
 
     By prodBestSeller_product = By.xpath("//h2[contains(text(),'Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS')]");
     By prodTitle_product = By.xpath("//span[@id='productTitle']");
@@ -26,109 +26,168 @@ public class Product extends Homepage{
     By prodCartSubtotalPrice_product = By.xpath("//span[@id='attach-accessory-cart-subtotal']");
     By prodProcToCheckoutBtn_product = By.xpath("//span[@id='attach-sidesheet-checkout-button']");
 
-    public void viewProduct(){
+    public void viewProduct() {
+
+        String expectedTitle, actualTitle;
 
         // Page title
-        String expectedTitle = "International Shopping: Shop Computers that Ship Internationally";
-        String actualTitle = driver.getTitle();
+        expectedTitle = "International Shopping: Shop Computers that Ship Internationally";
+        actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
         System.out.println("Page title: " + actualTitle);
 
     } // end method viewProduct()
 
-    public void clickProductBestSeller(){
+    public void clickProductBestSeller() {
 
-        driver.findElement(prodBestSeller_product).click();
-        System.out.println("Best selling product is clicked.");
+        try {
+            driver.findElement(prodBestSeller_product).click();
+            System.out.println("Best selling product is clicked.");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Best selling product is not available at the moment.");
+        }
 
     } // end method clickProductBestSeller()
 
-    public void viewProductBestSeller(){
+    public void viewProductBestSeller() {
+
+        String expectedTitle1, actualTitle1, expectedTitle2, actualTitle2, expectedPrice, actualPrice, expectedShippingImportFees, actualShippingImportFees, expectedDeliveryDate, actualDeliveryDate, expectedAvailability, actualAvailability, expectedDefaultQty, actualDefaultQty, expectedQty, actualQty;
 
         // Product Page title
-        String expectedTitle1 = "Amazon.com: Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver: Computers & Accessories";
-        String actualTitle1 = driver.getTitle();
-        Assert.assertEquals(actualTitle1, expectedTitle1, "Product page title does not match!");
-        System.out.println("Product page title: " + actualTitle1);
-
-        element = driver.findElement(prodTitle_product);
-        String actualTitle2 = element.getText();
-        String expectedTitle2 = "Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver";
-        Assert.assertEquals(actualTitle2, expectedTitle2, "Product title does not match!");
-        System.out.println("Product Title is :" + actualTitle2);
-
-        element = driver.findElement(prodPrice_product);
-        String actualPrice = element.getText();
-        String expectedPrice = "$364.99";
-        Assert.assertEquals(actualPrice, expectedPrice, "Product price does not match!");
-        System.out.println("Product Price is: " + actualPrice);
-
-        try{
-            element = driver.findElement(prodShippingImportFees_product);
-            String actualShippingImportFees = element.getText();
-            String expectedShippingImportFees = "$171.60 Shipping & Import Fees Deposit to Philippines";
-            Assert.assertEquals(actualShippingImportFees, expectedShippingImportFees, "Shipping and import fees does not match!");
-            System.out.println("Shipping and Import Fees is: " + actualShippingImportFees);
-        } catch (Exception e){
-            System.out.println("Shipping and Import Fees had changed.");
+        expectedTitle1 = "Amazon.com: Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver: Computers & Accessories";
+        try {
+            actualTitle1 = driver.getTitle();
+            Assert.assertEquals(actualTitle1, expectedTitle1, "Product page title does not match!");
+            System.out.println("Product page title: " + actualTitle1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedTitle1 + " is not available at the moment.");
         }
 
-        try{
+        expectedTitle2 = "Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS Display, AMD Ryzen 3 3200U, Vega 3 Graphics, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode, A515-43-R19L, Silver";
+        try {
+            element = driver.findElement(prodTitle_product);
+            actualTitle2 = element.getText();
+            Assert.assertEquals(actualTitle2, expectedTitle2, "Product title does not match!");
+            System.out.println("Product Title is :" + actualTitle2);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedTitle2 + " is not available at the moment.");
+        }
+
+        expectedPrice = "$364.99";
+        try {
+            element = driver.findElement(prodPrice_product);
+            actualPrice = element.getText();
+            Assert.assertEquals(actualPrice, expectedPrice, "Product price does not match!");
+            System.out.println("Product Price is: " + actualPrice);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedPrice + " is not available at the moment.");
+        }
+
+        expectedShippingImportFees = "$171.60 Shipping & Import Fees Deposit to Philippines";
+        try {
+            element = driver.findElement(prodShippingImportFees_product);
+            actualShippingImportFees = element.getText();
+            Assert.assertEquals(actualShippingImportFees, expectedShippingImportFees, "Shipping and import fees does not match!");
+            System.out.println("Shipping and Import Fees is: " + actualShippingImportFees);
+        } catch (Exception e) {
+            System.out.println("Shipping and Import Fees have been changed.");
+        }
+
+        expectedDeliveryDate = "Arrives: Feb 26 - April 14";
+        try {
             element = driver.findElement(prodDeliveryDate_product);
-            String actualDeliveryDate = element.getText();
-            String expectedDeliveryDate = "Arrives: Feb 24 - April 12";
+            actualDeliveryDate = element.getText();
             Assert.assertEquals(actualDeliveryDate, expectedDeliveryDate, "Delivery date does not match!");
             System.out.println("Delivery date is: " + expectedDeliveryDate);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Delivery date has changed.");
         }
 
-        element = driver.findElement(prodAvailability_product);
-        String actualAvailability = element.getText();
-        String expectedAvailability = "In Stock.";
-        Assert.assertEquals(actualAvailability, expectedAvailability, "Product availability does not match!");
-        System.out.println("Availability is: " + actualAvailability);
+        expectedAvailability = "In Stock.";
+        try {
+            element = driver.findElement(prodAvailability_product);
+            actualAvailability = element.getText();
+            Assert.assertEquals(actualAvailability, expectedAvailability, "Product availability does not match!");
+            System.out.println("Availability is: " + actualAvailability);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedAvailability + " is not available at the moment.");
+        }
 
-        element = driver.findElement(prodQuantity0_product);
-        String actualDefaultQty = element.getText();
-        String expectedDefaultQty = "1";
-        Assert.assertEquals(actualDefaultQty, expectedDefaultQty, "Default quantity does not match!");
-        System.out.println("Default quantity is: " + actualDefaultQty);
+        expectedDefaultQty = "1";
+        try {
+            element = driver.findElement(prodQuantity0_product);
+            actualDefaultQty = element.getText();
+            Assert.assertEquals(actualDefaultQty, expectedDefaultQty, "Default quantity does not match!");
+            System.out.println("Default quantity is: " + actualDefaultQty);
+            element.click();
+            System.out.println("Quantity dropdown button is clicked.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedDefaultQty + " is not available at the moment.");
+        }
 
-        element.click();
-        System.out.println("Quantity dropdown button is clicked.");
-
-        element = driver.findElement(prodQuantity1_product);
-        String actualQty = element.getText();
-        String expectedQty = "2";
-        Assert.assertEquals(actualQty, expectedQty, "Quantity does not match!");
-        System.out.println("Selected quantity is: " + actualQty);
-        element.click();
+        expectedQty = "2";
+        try {
+            element = driver.findElement(prodQuantity1_product);
+            actualQty = element.getText();
+            Assert.assertEquals(actualQty, expectedQty, "Quantity does not match!");
+            System.out.println("Selected quantity is: " + actualQty);
+            element.click();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedQty + " is not available at the moment.");
+        }
 
     } // end method viewProductBestSeller
 
-    public void clickAddToCartConfirmWindow(){
+    public void clickAddToCartConfirmWindow() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String expectedCartSubtotal, actualCartSubtotal, expectedCartSubtotalPrice, actualCartSubtotalPrice;
 
-        driver.findElement(prodAddToCartBtn_product).click();
-        System.out.println("Add to cart button is clicked.");
+        try {
+            driver.findElement(prodAddToCartBtn_product).click();
+            System.out.println("Add to cart button is clicked.");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Add to cart button is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotal_product));
-        String actualCartSubtotal = element.getText();
-        String expectedCartSubtotal = "Cart subtotal (2 items):";
-        Assert.assertEquals(actualCartSubtotal, expectedCartSubtotal, "Cart Subtotal does not match!");
-        System.out.println("Cart Subtotal is: " + actualCartSubtotal);
+        expectedCartSubtotal = "Cart subtotal (2 items):";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotal_product));
+            actualCartSubtotal = element.getText();
+            Assert.assertEquals(actualCartSubtotal, expectedCartSubtotal, "Cart Subtotal does not match!");
+            System.out.println("Cart Subtotal is: " + actualCartSubtotal);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(expectedCartSubtotal + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotalPrice_product));
-        String actualCartSubtotalPrice = element.getText();
-        String expectedCartSubtotalPrice = "$729.98";
-        Assert.assertEquals(actualCartSubtotalPrice, expectedCartSubtotalPrice, "Cart Subtotal price does not match!");
-        System.out.println("Cart Subtotal price is: " + actualCartSubtotalPrice);
+        expectedCartSubtotalPrice = "$729.98";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotalPrice_product));
+            actualCartSubtotalPrice = element.getText();
+            Assert.assertEquals(actualCartSubtotalPrice, expectedCartSubtotalPrice, "Cart Subtotal price does not match!");
+            System.out.println("Cart Subtotal price is: " + actualCartSubtotalPrice);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println(expectedCartSubtotalPrice + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.elementToBeClickable(prodProcToCheckoutBtn_product));
-        element.click();
-        System.out.println("Proceed to checkout button is clicked on Add to Cart Confirmation window.");
+        try {
+            element = wait.until(ExpectedConditions.elementToBeClickable(prodProcToCheckoutBtn_product));
+            element.click();
+            System.out.println("Proceed to checkout button is clicked on Add to Cart Confirmation window.");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Proceed to checkout button is not available at the moment.");
+        }
 
     } // end method clickAddToCartBtn()
 

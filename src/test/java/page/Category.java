@@ -31,20 +31,25 @@ public class Category extends Homepage {
 
     } // end method clickLinkShopByCat()
 
-    public void viewCategory(){
+    public void viewCategory() {
 
         String expectedTitle, actualTitle;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(bestSellers_catPage));
         expectedTitle = "Computers & Accessories";
-        actualTitle = element.getText();
-        Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
-        System.out.println("Page title: " + actualTitle);
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(bestSellers_catPage));
+            actualTitle = element.getText();
+            Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
+            System.out.println("Page title: " + actualTitle);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedTitle + " is not available at the moment.");
+        }
 
     } // end method viewCategory()
 
-    public void viewLeftNavBrowseBox(){
+    public void viewLeftNavBrowseBox() {
 
         String expectedTitle1, expectedTitle2, expectedTitle3, expectedTitle4, expectedTitle5, expectedTitle6, expectedTitle7, expectedTitle8, expectedTitle9, actualTitle1, actualTitle2, actualTitle3, actualTitle4, actualTitle5, actualTitle6, actualTitle7, actualTitle8, actualTitle9;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -55,7 +60,7 @@ public class Category extends Homepage {
             actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
             System.out.println("Left Navigation's Browse Box Title is: " + actualTitle1);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle1 + " is not available at the moment.");
         }
@@ -66,7 +71,7 @@ public class Category extends Homepage {
             actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle2);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle2 + " is not available at the moment.");
         }
@@ -77,18 +82,18 @@ public class Category extends Homepage {
             actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle3);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle3 + " is not available at the moment.");
         }
 
         expectedTitle4 = "Arts & Crafts";
-        try{
+        try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(leftNavBrowseBoxList3_catPage));
             actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle4);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle4 + " is not available at the moment.");
         }
@@ -99,7 +104,7 @@ public class Category extends Homepage {
             actualTitle5 = element.getText();
             Assert.assertEquals(actualTitle5, expectedTitle5, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle5);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle5 + " is not available at the moment.");
         }
@@ -110,18 +115,18 @@ public class Category extends Homepage {
             actualTitle6 = element.getText();
             Assert.assertEquals(actualTitle6, expectedTitle6, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle6);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle6 + " is not available at the moment.");
         }
 
         expectedTitle7 = "Beauty & Personal Care";
-        try{
+        try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(leftNavBrowseBoxList6_catPage));
             actualTitle7 = element.getText();
             Assert.assertEquals(actualTitle7, expectedTitle7, "List title does not match!");
             System.out.println("Browse Box's List Title is: " + actualTitle7);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle7 + " is not available at the moment.");
         }
@@ -132,7 +137,7 @@ public class Category extends Homepage {
             actualTitle8 = element.getText();
             Assert.assertEquals(actualTitle8, expectedTitle8);
             System.out.println("Browse Box's List Title is: " + actualTitle8);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle8 + " is not available at the moment.");
         }
@@ -145,7 +150,7 @@ public class Category extends Homepage {
             System.out.println("Browse Box's List Title is: " + actualTitle9);
             element.click();
             System.out.println("Computers link is clicked.");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle9 + " is not available at the moment.");
         }

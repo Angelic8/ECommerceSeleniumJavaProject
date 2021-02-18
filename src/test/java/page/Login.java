@@ -29,55 +29,87 @@ public class Login extends Homepage {
     By forgotPasswordLink_login = By.xpath("//a[@id='auth-fpp-link-bottom']");
     By rememberMeChkbox_login = By.name("rememberMe");
     By rememberMeTxt_login = By.className("a-checkbox-label");
-/*
-    public void clickAccountList(){
 
-        driver.findElement(acctListsLink_login).click();
+    /*
+        public void clickAccountList(){
 
-    } // end method clickAccountList()
-*/
-    public void viewLoginUsername(){
+            driver.findElement(acctListsLink_login).click();
+
+        } // end method clickAccountList()
+    */
+    public void viewLoginUsername() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String expectedSignIn, actualSignIn, expectedTitle, actualTitle, expectedLegal, actualLegal, expectedNeedHelp, actualNeedHelp, expectedCreateAcctTxt, actualCreateAcctTxt, expectedEmailOrPhoneNum, actualEmailOrPhoneNum;
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
-        String actualSignIn = element.getText();
-        String expectedSignIn = "Sign-In";
-        Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
-        System.out.println("Section title is: " + actualSignIn);
+        expectedSignIn = "Sign-In";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
+            actualSignIn = element.getText();
+            Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
+            System.out.println("Section title is: " + actualSignIn);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedSignIn + " is not available at the moment.");
+        }
 
         // Page title
-        String expectedTitle = "Amazon Sign-In";
-        String actualTitle = driver.getTitle();
+        expectedTitle = "Amazon Sign-In";
+        actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
         System.out.println("Page title: " + actualTitle);
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(legalTxt_login));
-        String actualLegal = element.getText();
-        String expectedLegal = "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.";
-        Assert.assertEquals(actualLegal, expectedLegal, "Legal text does not match!");
-        System.out.println("Legal text is: " + actualLegal);
+        expectedLegal = "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(legalTxt_login));
+            actualLegal = element.getText();
+            Assert.assertEquals(actualLegal, expectedLegal, "Legal text does not match!");
+            System.out.println("Legal text is: " + actualLegal);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedLegal + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(needHelpLink_login));
-        String actualNeedHelp = element.getText();
-        String expectedNeedHelp = "Need help?";
-        Assert.assertEquals(actualNeedHelp, expectedNeedHelp, "Need Help link does not match!");
-        System.out.println("Link is: " + actualNeedHelp);
+        expectedNeedHelp = "Need help?";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(needHelpLink_login));
+            actualNeedHelp = element.getText();
+            Assert.assertEquals(actualNeedHelp, expectedNeedHelp, "Need Help link does not match!");
+            System.out.println("Link is: " + actualNeedHelp);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedNeedHelp + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(createAcctTxt_login));
-        String actualCreateAcctTxt = element.getText();
-        String expectedCreateAcctTxt = "New to Amazon?";
-        Assert.assertEquals(actualCreateAcctTxt, expectedCreateAcctTxt, "Text does not match!");
-        System.out.println("Create new account text is: " + actualCreateAcctTxt);
+        expectedCreateAcctTxt = "New to Amazon?";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(createAcctTxt_login));
+            actualCreateAcctTxt = element.getText();
+            Assert.assertEquals(actualCreateAcctTxt, expectedCreateAcctTxt, "Text does not match!");
+            System.out.println("Create new account text is: " + actualCreateAcctTxt);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedCreateAcctTxt + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(createAcctBtn_login));
-        System.out.println("Create your amazon account button is available.");
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(createAcctBtn_login));
+            System.out.println("Create your amazon account button is available.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Create your amazon account button is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailOrPhoneNum_login));
-        String actualEmailOrPhoneNum = element.getText();
-        String expectedEmailOrPhoneNum = "Email or mobile phone number";
-        Assert.assertEquals(actualEmailOrPhoneNum, expectedEmailOrPhoneNum, "Input label does not match!");
-        System.out.println("Input title is: " + actualEmailOrPhoneNum);
+        expectedEmailOrPhoneNum = "Email or mobile phone number";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailOrPhoneNum_login));
+            actualEmailOrPhoneNum = element.getText();
+            Assert.assertEquals(actualEmailOrPhoneNum, expectedEmailOrPhoneNum, "Input label does not match!");
+            System.out.println("Input title is: " + actualEmailOrPhoneNum);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedEmailOrPhoneNum + " is not available at the moment.");
+        }
 
     } // end method viewLoginUsername()
 
@@ -86,72 +118,127 @@ public class Login extends Homepage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         readTextFilesObj = new ReadTextFiles();
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailOrPhoneNumInput_login));
-        element.sendKeys(readTextFilesObj.getUsername());
-        System.out.println("Email or phone number input field is available and data is entered.");
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailOrPhoneNumInput_login));
+            element.sendKeys(readTextFilesObj.getUsername());
+            System.out.println("Email or phone number input field is available and data is entered.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Email or phone number input field is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.elementToBeClickable(continueBtn_login));
-        element.click();
-        System.out.println("Continue button is clicked.");
+        try {
+            element = wait.until(ExpectedConditions.elementToBeClickable(continueBtn_login));
+            element.click();
+            System.out.println("Continue button is clicked.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Continue button is not available at the moment.");
+        }
 
     } // end method inputUserCredentials()
 
     public void viewLoginPassword() throws FileNotFoundException {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        readTextFilesObj = new ReadTextFiles();
+        String expectedSignIn, actualSignIn, expectedUserData, actualUserData, expectedChangeClaimLink, actualChangeClaimLink, expectedForgotPasswordLink, actualForgotPasswordLink;
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
-        String actualSignIn = element.getText();
-        String expectedSignIn = "Sign-In";
-        Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
-        System.out.println("Section title is: " + actualSignIn);
+        expectedSignIn = "Sign-In";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(signIn_login));
+            actualSignIn = element.getText();
+            Assert.assertEquals(actualSignIn, expectedSignIn, "Title does not match!");
+            System.out.println("Section title is: " + actualSignIn);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedSignIn + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(userData_login));
-        String actualUserData = element.getText();
-        String expectedUserData = readTextFilesObj.getUsername();
-        Assert.assertEquals(actualUserData, expectedUserData, "Username does not match!");
-        System.out.println("Username is: " + actualUserData);
+        expectedUserData = readTextFilesObj.getUsername();
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(userData_login));
+            actualUserData = element.getText();
+            Assert.assertEquals(actualUserData, expectedUserData, "Username does not match!");
+            System.out.println("Username is: " + actualUserData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Username is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(changeClaimLink_login));
-        String actualChangeClaimLink = element.getText();
-        String expectChangeClaimLink = "Change";
-        Assert.assertEquals(actualChangeClaimLink, expectChangeClaimLink, "Link does not match!");
-        System.out.println("Link is: " + actualChangeClaimLink);
+        expectedChangeClaimLink = "Change";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(changeClaimLink_login));
+            actualChangeClaimLink = element.getText();
+            Assert.assertEquals(actualChangeClaimLink, expectedChangeClaimLink, "Link does not match!");
+            System.out.println("Link is: " + actualChangeClaimLink);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedChangeClaimLink + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(forgotPasswordLink_login));
-        String actualForgotPasswordLink = element.getText();
-        String expectForgotPasswordLink = "Forgot your password?";
-        Assert.assertEquals(actualForgotPasswordLink, expectForgotPasswordLink, "Link does not match!");
-        System.out.println("Link is: " + actualForgotPasswordLink);
+        expectedForgotPasswordLink = "Forgot your password?";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(forgotPasswordLink_login));
+            actualForgotPasswordLink = element.getText();
+            Assert.assertEquals(actualForgotPasswordLink, expectedForgotPasswordLink, "Link does not match!");
+            System.out.println("Link is: " + actualForgotPasswordLink);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedForgotPasswordLink + " is not available at the moment.");
+        }
 
     } // end method viewLoginPassword()
 
     public void inputPasswordCredentials() throws FileNotFoundException {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        readTextFilesObj = new ReadTextFiles();
+        String expectedPasswordTxt, actualPasswordTxt, expectedRememberMeTxt, actualRememberMeTxt;
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordTxt_login));
-        String actualPasswordTxt = element.getText();
-        String expectPasswordTxt = "Password";
-        Assert.assertEquals(actualPasswordTxt, expectPasswordTxt, "Label does not match!");
-        System.out.println("Label is: " + actualPasswordTxt);
+        expectedPasswordTxt = "Password";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordTxt_login));
+            actualPasswordTxt = element.getText();
+            Assert.assertEquals(actualPasswordTxt, expectedPasswordTxt, "Label does not match!");
+            System.out.println("Label is: " + actualPasswordTxt);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedPasswordTxt + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(userPasswordInput_login));
-        element.sendKeys(readTextFilesObj.getPassword());
-        System.out.println("Password is entered.");
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(userPasswordInput_login));
+            element.sendKeys(readTextFilesObj.getPassword());
+            System.out.println("Password is entered.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Password is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeChkbox_login));
-        System.out.println("Keep me signed in checkbox is available.");
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeChkbox_login));
+            System.out.println("Keep me signed in checkbox is available.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Keep me signed in checkbox is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeTxt_login));
-        String actualRememberMeTxt = element.getText();
-        String expectedRememberMeTxt = "Keep me signed in.";
+        expectedRememberMeTxt = "Keep me signed in.";
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(rememberMeTxt_login));
+            actualRememberMeTxt = element.getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(expectedRememberMeTxt + " is not available at the moment.");
+        }
 
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(signInSubmitBtn_login));
-        element.click();
-        System.out.println("Sign in submit button is clicked.");
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(signInSubmitBtn_login));
+            element.click();
+            System.out.println("Sign in submit button is clicked.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Sign in submit button is not available at the moment.");
+        }
 
     } // end method inputPasswordCredentials()
 
