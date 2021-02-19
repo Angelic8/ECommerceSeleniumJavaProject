@@ -32,6 +32,7 @@ public class ECommerceTestCases {
     protected static SearchAndSearchResults searchAndSearchResultsObj;
     protected static Shipping shippingObj;
     protected static ShoppingCart shoppingCartObj;
+    protected static PaymentMethod paymentMethodObj;
 
     @BeforeTest
     public void setupTest() {
@@ -81,6 +82,9 @@ public class ECommerceTestCases {
         shoppingCartObj = new ShoppingCart();
         shoppingCartObj.setWebDriver(driver);
 
+        paymentMethodObj = new PaymentMethod();
+        paymentMethodObj.setWebDriver(driver);
+
     } // end method setupTest()
 
     @Test(priority = 1)
@@ -124,7 +128,6 @@ public class ECommerceTestCases {
         homepageObj.clickHome();
 
     } // end method testSearchAndSearchResults()
-
 
     @Test(priority = 3)
     public void testCategoryPage() {
@@ -172,6 +175,13 @@ public class ECommerceTestCases {
         shoppingCartObj.proceedToCheckout();
 
     } // end method testShoppingCart()
+
+    @Test(priority = 8)
+    public void testPaymentMethod(){
+
+        paymentMethodObj.viewPaymentMethod();
+
+    } // end method testPaymentMethod()
 
     @AfterTest
     public void quitBrowser() {

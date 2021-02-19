@@ -312,15 +312,22 @@ public class Shipping extends Homepage {
         System.out.println("Option 2 Description: " + actualText13);
 
         radioBtn1 = driver.findElement(radio1_shippingOptions).getAttribute("checked");
-        if (radioBtn1.equalsIgnoreCase("true")){
+        if (radioBtn1.equalsIgnoreCase("true")) {
             System.out.println("Option 1: averages 5-10 business days radio button is checked.");
-        } else if(radioBtn1.equalsIgnoreCase("false")){
+        } else if (radioBtn1.equalsIgnoreCase("false")) {
             System.out.println("Option 1: averages 5-10 business days radio button is not checked.");
+        } // end if-else
+
+        radioBtn2 = driver.findElement(radio1_shippingOptions).getAttribute("checked");
+        if (radioBtn2.equalsIgnoreCase("true")) {
+            System.out.println("Option 2: Tuesday, Feb. 23 - Tuesday, Mar. 2 is checked.");
+        } else if (radioBtn2.equalsIgnoreCase("false")) {
+            System.out.println("Option 2: Tuesday, Feb. 23 - Tuesday, Mar. 2 radio button is not checked.");
         } // end if-else
 
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(continueBtn_shippingOptions));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Continue button is clicked.");
         }
 
