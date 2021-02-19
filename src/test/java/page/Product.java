@@ -97,7 +97,7 @@ public class Product extends Homepage {
             System.out.println("Shipping and Import Fees have been changed.");
         }
 
-        expectedDeliveryDate = "Arrives: Feb 26 - April 14";
+        expectedDeliveryDate = "Arrives: Feb 26 - April 12";
         try {
             element = driver.findElement(prodDeliveryDate_product);
             actualDeliveryDate = element.getText();

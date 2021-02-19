@@ -31,6 +31,7 @@ public class ECommerceTestCases {
     protected static Login loginObj;
     protected static SearchAndSearchResults searchAndSearchResultsObj;
     protected static Shipping shippingObj;
+    protected static ShoppingCart shoppingCartObj;
 
     @BeforeTest
     public void setupTest() {
@@ -76,6 +77,9 @@ public class ECommerceTestCases {
 
         shippingObj = new Shipping();
         shippingObj.setWebDriver(driver);
+
+        shoppingCartObj = new ShoppingCart();
+        shoppingCartObj.setWebDriver(driver);
 
     } // end method setupTest()
 
@@ -161,6 +165,13 @@ public class ECommerceTestCases {
 
     } // end method testShipping()
 
+    @Test(priority = 7)
+    public void testShoppingCart(){
+
+        shoppingCartObj.viewShoppingCart();
+        shoppingCartObj.proceedToCheckout();
+
+    } // end method testShoppingCart()
 
     @AfterTest
     public void quitBrowser() {

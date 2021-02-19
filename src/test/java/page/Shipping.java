@@ -253,7 +253,7 @@ public class Shipping extends Homepage {
     public void viewShippingOptions() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        String actualText, actualText1, actualText2, actualText3, actualText4, actualText5, actualText6, actualText7, actualText8, actualText9, actualText10, actualText11, actualText12, actualText13;
+        String actualText, actualText1, actualText2, actualText3, actualText4, actualText5, actualText6, actualText7, actualText8, actualText9, actualText10, actualText11, actualText12, actualText13, radioBtn1, radioBtn2;
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(title_shippingOptions));
         actualText = element.getText();
@@ -311,7 +311,19 @@ public class Shipping extends Homepage {
         actualText13 = element.getText();
         System.out.println("Option 2 Description: " + actualText13);
 
-    } // end method viewShippingOptions()
+        radioBtn1 = driver.findElement(radio1_shippingOptions).getAttribute("checked");
+        if (radioBtn1.equalsIgnoreCase("true")){
+            System.out.println("Option 1: averages 5-10 business days radio button is checked.");
+        } else if(radioBtn1.equalsIgnoreCase("false")){
+            System.out.println("Option 1: averages 5-10 business days radio button is not checked.");
+        } // end if-else
 
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(continueBtn_shippingOptions));
+        }catch (Exception e){
+            System.out.println("Continue button is clicked.");
+        }
+
+    } // end method viewShippingOptions()
 
 } // end class Shipping
