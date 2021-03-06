@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.io.IOException;
 import java.time.Duration;
 
 public class Homepage {
@@ -57,9 +56,9 @@ public class Homepage {
             actualTitle = driver.getTitle();
             Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
             System.out.println("Page title: " + actualTitle);
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println(expectedTitle + " is not available at the moment.");
+        } catch (AssertionError e) {
+            System.out.println("Test Failed!");
+            Assert.fail("Message does not match");
         }
 
     } // end method viewHomepage()
@@ -71,7 +70,7 @@ public class Homepage {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(dismissBtn_home)).click();
             System.out.println("Shipping Address Dismiss Button is clicked.");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Shipping Address Dismiss Button is not available at the moment.");
         }
@@ -147,7 +146,7 @@ public class Homepage {
         try {
             driver.findElement(navHamMenu_home).click();
             System.out.println("\nHamburger menu is clicked.");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Hamburger menu is not available at the moment.");
         }
@@ -200,7 +199,7 @@ public class Homepage {
             element = wait.until(ExpectedConditions.elementToBeClickable(navHamMenuClose_home));
             element.click();
             System.out.println("Hamburger menu close button is clicked.");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Hamburger menu close button is not available at the moment.");
         }

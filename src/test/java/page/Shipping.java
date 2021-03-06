@@ -1,7 +1,6 @@
 package page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -48,7 +47,7 @@ public class Shipping extends Homepage {
     By option2Desc_shippingOptions = By.cssSelector("div.notouch:nth-child(6) div.checkout.sosp.checkout-sosp-desktop:nth-child(1) div.a-container.celwidget:nth-child(2) div.a-container:nth-child(1) div.a-spacing-base.clearfix form.a-spacing-base.checkout-page-form div.order-display:nth-child(5) div.one-shipment.a-spacing-extra-large.first-shipment div.one-shipment-options.a-spacing-extra-large:nth-child(2) div.slidable-panel:nth-child(1) div.ship-speed:nth-child(1) div.a-spacing-base.a-box-group:nth-child(3) div.fake-label.a-box.a-last:nth-child(2) div.a-box-inner div.a-accordion-row div.description:nth-child(2) span.displayable-value.a-text-normal > span.a-color-secondary:nth-child(3)");
     By learnMoreLink_shippingOptions = By.cssSelector("div.notouch:nth-child(6) div.checkout.sosp.checkout-sosp-desktop:nth-child(1) div.a-container.celwidget:nth-child(2) div.a-container:nth-child(1) div.a-spacing-base.clearfix form.a-spacing-base.checkout-page-form div.order-display:nth-child(5) div.one-shipment.a-spacing-extra-large.first-shipment div.one-shipment-options.a-spacing-extra-large:nth-child(2) div.slidable-panel:nth-child(1) div.ship-speed:nth-child(1) div:nth-child(2) > a:nth-child(1)");
     By changeLink_shippingOptions = By.xpath("//a[contains(text(),'Change quantities or delete')]");
-    By continueBtn_shippingOptions = By.cssSelector("div.notouch:nth-child(6) div.checkout.sosp.checkout-sosp-desktop:nth-child(1) div.a-container.celwidget:nth-child(2) div.a-container:nth-child(1) div.a-spacing-base.clearfix form.a-spacing-base.checkout-page-form div.a-row:nth-child(6) div.save-sosp-button-box.a-column.a-span4.a-span-last.a-box.a-color-alternate-background.a-right div.a-box-inner span.sosp-continue-button.a-button.a-button-primary.a-button-span12.a-padding-none.continue-button > span.a-button-inner");
+    By continueBtn_shippingOptions = By.cssSelector("div.notouch:nth-child(2) div.checkout.sosp.checkout-sosp-desktop:nth-child(1) div.a-container.celwidget:nth-child(2) div.a-container:nth-child(1) div.a-spacing-base.clearfix form.a-spacing-base.checkout-page-form div.a-row:nth-child(6) div.save-sosp-button-box.a-column.a-span4.a-span-last.a-box.a-color-alternate-background.a-right div.a-box-inner span.sosp-continue-button.a-button.a-button-primary.a-button-span12.a-padding-none.continue-button span.a-button-inner > input.a-button-text");
 
     public void viewShipping() {
 
@@ -327,8 +326,10 @@ public class Shipping extends Homepage {
 
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(continueBtn_shippingOptions));
-        } catch (Exception e) {
+            element.click();
             System.out.println("Continue button is clicked.");
+        } catch (Exception e) {
+            System.out.println("Continue button is not available at the moment.");
         }
 
     } // end method viewShippingOptions()

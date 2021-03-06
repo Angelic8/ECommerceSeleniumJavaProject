@@ -1,13 +1,18 @@
-
 package test;
+
+/*
+  ****************************************
+
+  @author angel
+ * @date 26 January 2021
+ * @project ECommerce Selenium Java
+ * ****************************************
+ */
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import page.*;
 
@@ -19,10 +24,6 @@ public class ECommerceTestCases {
 
     // tools
     private static WebDriver driver;
-    private static WebElement element;
-
-    // url
-    private final String appURL = "https://www.amazon.com/";
 
     // pages
     protected static Homepage homepageObj;
@@ -58,6 +59,7 @@ public class ECommerceTestCases {
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
+        String appURL = "https://www.amazon.com/";
         driver.get(appURL);
         driver.manage().deleteAllCookies();
 
@@ -97,7 +99,7 @@ public class ECommerceTestCases {
         homepageObj.viewSections();
 
     } // end method testHomepage
-
+/*
     @Test(priority = 2)
     public void testSearchAndSearchResults() {
 
@@ -128,13 +130,14 @@ public class ECommerceTestCases {
         homepageObj.clickHome();
 
     } // end method testSearchAndSearchResults()
-
-    @Test(priority = 3)
+*/
+    @Test(priority = 2)
     public void testCategoryPage() {
 
         categoryObj.clickLinkShopByCat();
         categoryObj.viewCategory();
         categoryObj.viewLeftNavBrowseBox();
+        categoryObj.viewComputersAndTablets();
 
     } // end method testCategoryPage
 
@@ -144,45 +147,46 @@ public class ECommerceTestCases {
         productObj.viewProduct();
         productObj.clickProductBestSeller();
         productObj.viewProductBestSeller();
-        productObj.clickAddToCartConfirmWindow();
+        //productObj.clickAddToCartConfirmWindow();
 
     } // end method testProductPage()
 
-    @Test(priority = 5)
-    public void testLoginPage() throws FileNotFoundException {
+/*
+        @Test(priority = 5)
+        public void testLoginPage() throws FileNotFoundException {
 
-        //loginObj.clickAccountList();
-        loginObj.viewLoginUsername();
-        loginObj.inputUserCredentials();
-        loginObj.viewLoginPassword();
-        loginObj.inputPasswordCredentials();
+            //loginObj.clickAccountList();
+            loginObj.viewLoginUsername();
+            loginObj.inputUserCredentials();
+            loginObj.viewLoginPassword();
+            loginObj.inputPasswordCredentials();
 
-    } // end method testLoginPage()
+        } // end method testLoginPage()
 
-    @Test(priority = 6)
-    public void testShipping() throws InterruptedException {
+        @Test(priority = 6)
+        public void testShipping() throws InterruptedException {
 
-        shippingObj.viewShipping();
-        shippingObj.addNewAddress();
-        shippingObj.viewShippingOptions();
+            shippingObj.viewShipping();
+            shippingObj.addNewAddress();
+            shippingObj.viewShippingOptions();
 
-    } // end method testShipping()
+        } // end method testShipping()
 
-    @Test(priority = 7)
-    public void testShoppingCart(){
+        @Test(priority = 7)
+        public void testShoppingCart() {
 
-        shoppingCartObj.viewShoppingCart();
-        shoppingCartObj.proceedToCheckout();
+            shoppingCartObj.viewShoppingCart();
+            shoppingCartObj.proceedToCheckout();
 
-    } // end method testShoppingCart()
+        } // end method testShoppingCart()
 
-    @Test(priority = 8)
-    public void testPaymentMethod(){
+        @Test(priority = 7)
+        public void testPaymentMethod() {
 
-        paymentMethodObj.viewPaymentMethod();
+            paymentMethodObj.viewPaymentMethod();
 
-    } // end method testPaymentMethod()
-
+        } // end method testPaymentMethod()
+*/
     @AfterTest
     public void quitBrowser() {
 

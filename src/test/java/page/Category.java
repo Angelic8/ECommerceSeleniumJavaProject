@@ -1,9 +1,6 @@
 package page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,6 +20,8 @@ public class Category extends Homepage {
     By leftNavBrowseBoxList6_catPage = By.xpath("//a[contains(text(),'Beauty & Personal Care')]");
     By leftNavBrowseBoxList7_catPage = By.xpath("//body/div[@id='a-page']/div[2]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[7]/a[1]");
     By leftNavBrowseBoxList8_catPage = By.xpath("//a[contains(text(),'Computers')]");
+    By linkComputersAndTablets_subCatPage = By.xpath("//span[contains(text(),'Computers & Tablets')]");
+
 
     public void clickLinkShopByCat() {
 
@@ -156,5 +155,18 @@ public class Category extends Homepage {
         }
 
     } // end method viewLeftNavBrowseBox()
+
+    public void viewComputersAndTablets(){
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(linkComputersAndTablets_subCatPage));
+            element.click();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    } // end method viewComputersAndTablets()
 
 } // end method Category
