@@ -13,6 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.*;
 import page.*;
 
@@ -51,14 +52,16 @@ public class ECommerceTestCases {
 
         // 4 - Set ExperimentalOption - prefs
         options.setExperimentalOption("prefs", prefs);
-
+        options.setAcceptInsecureCerts(true);
         WebDriverManager.chromedriver().setup();
 
         // 5 - Now Pass ChromeOptions instance to ChromeDriver Constructor
         // To initialize chrome driver which will switch off this browser notification on the chrome browser
         driver = new ChromeDriver(options);
 
+        // browser resolution
         driver.manage().window().maximize();
+
         String appURL = "https://www.amazon.com/";
         driver.get(appURL);
         driver.manage().deleteAllCookies();

@@ -10,6 +10,7 @@ import java.time.Duration;
 public class Category extends Homepage {
 
     By linkShopByCat_homePage = By.xpath("//body[1]/div[1]/div[2]/div[3]/div[1]/div[5]/div[1]/div[3]/a[1]");
+    //By linkShopByCat_homePage = By.cssSelector("body.a-m-us.a-aui_72554-c.a-aui_mm_desktop_exp_291916-c.a-aui_mm_desktop_launch_291918-c.a-aui_mm_desktop_targeted_exp_291928-c.a-aui_mm_desktop_targeted_launch_291922-c.a-aui_pci_risk_banner_210084-c.a-aui_preload_261698-c.a-aui_rel_noreferrer_noopener_309527-c.a-aui_tnr_v2_180836-c:nth-child(2) div.a-section.a-spacing-none:nth-child(30) div.a-section.a-spacing-none.aok-relative:nth-child(8) div.a-section.a-spacing-none.gw-card-layout:nth-child(1) div.gw-col.celwidget.csm-placement-id-e5b0c85f-569c-4c90-a58f-0c0a260e45a0.desktop-gateway-atf_c5a5ae71-f3c1-4f61-bf7d-323ae610f968.pd_rd_wg-K81oT.pd_rd_w-X3k7I.pd_rd_r-c94a33b0-41f7-4deb-a381-37c415ba6f8f:nth-child(4) div.a-cardui.quad-label-card.card-lite.quad-image-label:nth-child(2) div.a-cardui-footer > a.a-link-normal.see-more.truncate-1line");
     By bestSellers_catPage = By.xpath("//h2[contains(text(),'Computers & Accessories')]");
     By leftNavBrowseBox_catPage = By.xpath("//h3[contains(text(),'Departments')]");
     By leftNavBrowseBoxList1_catPage = By.xpath("//body/div[@id='a-page']/div[2]/div[2]/div[2]/div[1]/div[1]/ul[1]/li[1]/a[1]");
