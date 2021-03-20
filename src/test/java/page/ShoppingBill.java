@@ -1,4 +1,4 @@
-package page;
+/*package page;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -10,9 +10,9 @@ public class ShoppingBill extends Product {
     String newTotalAmt;
     double convertCartSubtotal, multiplyConvertCartSubtotal, totalAmt;
     double wholePrice;
-    Pattern pattern;
-    Matcher match;
     DecimalFormat decFormat;
+    Matcher match;
+    Pattern pattern;
 
     public String getNewTotalAmt() {
         return newTotalAmt;
@@ -28,14 +28,12 @@ public class ShoppingBill extends Product {
         String moneySign = "$";
 
         // get the regex
-        pattern = Pattern.compile(String.valueOf(regexStringsObj.regexDigits));
+        pattern = Pattern.compile(RegexStrings.regexDigits);
 
         // get the value and match it with regex
         match = pattern.matcher(getExpectedPrice());
         match.find();
-        group = match.group(1);
         wholePrice = Double.parseDouble(group);
-        System.out.println("Price: " + wholePrice);
 
         // used for rounding down whole price
         //decFormat = new DecimalFormat();
@@ -44,18 +42,16 @@ public class ShoppingBill extends Product {
 
         // double to String
         convertCartSubtotal = Double.parseDouble(String.valueOf(wholePrice));
-        System.out.println("Converted price 2: " + convertCartSubtotal);
 
         // multiply by quantity
         multiplyConvertCartSubtotal = convertCartSubtotal * 2;
-        System.out.println("New new price 2: " + multiplyConvertCartSubtotal);
 
         // concat symbol to integer value
         totalAmt = Double.valueOf(multiplyConvertCartSubtotal);
         newTotalAmt = moneySign.concat(String.valueOf(totalAmt));
-        System.out.println("Amount: " + newTotalAmt);
         setNewTotalAmt(newTotalAmt);
 
     } // end method prodQty()
 
 } // end class ShoppingBill
+*/

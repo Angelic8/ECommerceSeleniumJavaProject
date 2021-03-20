@@ -102,7 +102,7 @@ public class ECommerceTestCases {
         homepageObj.viewSections();
 
     } // end method testHomepage
-/*
+
     @Test(priority = 2)
     public void testSearchAndSearchResults() {
 
@@ -133,7 +133,7 @@ public class ECommerceTestCases {
         homepageObj.clickHome();
 
     } // end method testSearchAndSearchResults()
-*/
+
     @Test(priority = 2)
     public void testCategoryPage() {
 

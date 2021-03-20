@@ -7,24 +7,18 @@ import org.testng.Assert;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import page.ShoppingBill;
+//import page.ShoppingBill;
 
 public class Product extends Homepage {
 
-    ShoppingBill shoppingBillObj;
-    protected String expectedTitle1, actualTitle1, expectedTitle2, actualTitle2, actualPrice, expectedShippingImportFees, actualShippingImportFees, expectedDeliveryDate, actualDeliveryDate, expectedDefaultQty, actualDefaultQty, expectedQty, actualQty, expectedCartSubtotal, actualCartSubtotal, actualCartSubtotalPrice, expectedTitle, actualTitle;
-    protected String expectedPrice;
-
-    public String getExpectedPrice() {
-        return expectedPrice;
-    } // end method getExpectedPrice()
-
-    public void setExpectedPrice(String expectedPrice) {
-        this.expectedPrice = expectedPrice;
-    } // end method setExpectedPrice
+    //ShoppingBill shoppingBillObj;
+    protected String expectedTitle1, expectedQty, actualTitle1, expectedTitle2, actualTitle2, actualPrice, expectedShippingImportFees, actualShippingImportFees, expectedDeliveryDate, actualDeliveryDate, actualDefaultQty, actualQty, expectedCartSubtotal, actualCartSubtotal, actualCartSubtotalPrice, expectedTitle, actualTitle;
+    protected String expectedPrice, expectedDefaultQty;
 
     By prodBestSeller_product = By.xpath("//span[contains(text(),'Acer Aspire 5 Slim Laptop, 15.6 inches Full HD IPS')]");
     By prodTitle_product = By.xpath("//span[@id='productTitle']");
@@ -33,7 +27,8 @@ public class Product extends Homepage {
     By prodDeliveryDate_product = By.xpath("//div[@id='deliveryMessageMirId']");
     By prodAvailability_product = By.xpath("//body/div[@id='a-page']/div[@id='dp']/div[@id='dp-container']/div[@id='ppd']/div[@id='rightCol']/div[@id='desktop_buybox']/div[@id='buybox']/div[@id='exports_desktop_buybox']/div[@id='exportsBuybox']/div[@id='exports_desktop_qualifiedBuybox']/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/span[1]");
     By prodQuantity_product = By.xpath("//span[@id='a-autoid-0-announce']");
-    By prodQuantity0_product = By.cssSelector("#a-autoid-0");
+    By prodQuantity0_product = By.cssSelector("#a-autoid-0-announce");
+
     By prodQuantity1_product = By.cssSelector("#quantity_1");
     By prodAddToCartBtn_product = By.xpath("//input[@id='add-to-cart-button']");
     By prodCartSubtotal_product = By.xpath("//span[@id='attach-accessory-cart-total-string']");
@@ -64,7 +59,7 @@ public class Product extends Homepage {
 
     public void viewProductBestSeller() {
 
-        shoppingBillObj = new ShoppingBill();
+        //shoppingBillObj = new ShoppingBill();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Product Page title
@@ -90,18 +85,18 @@ public class Product extends Homepage {
         }
 
         expectedPrice = "$364.99";
-        setExpectedPrice(expectedPrice);
+
         try {
             element = driver.findElement(prodPrice_product);
             actualPrice = element.getText();
-            Assert.assertEquals(actualPrice, getExpectedPrice(), "Product price does not match!");
+            Assert.assertEquals(actualPrice, expectedPrice, "Product price does not match!");
             System.out.println("Product Price is: " + actualPrice);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(getExpectedPrice() + " is not available at the moment.");
+            System.out.println(expectedPrice + " is not available at the moment.");
         }
 
-        expectedShippingImportFees = "$171.57 Shipping & Import Fees Deposit to Philippines";
+        expectedShippingImportFees = "$170.72 Shipping & Import Fees Deposit to Philippines";
         try {
             element = driver.findElement(prodShippingImportFees_product);
             actualShippingImportFees = element.getText();
@@ -111,7 +106,7 @@ public class Product extends Homepage {
             System.out.println("Shipping and Import Fees have been changed.");
         }
 
-        expectedDeliveryDate = "Arrives: March 18 - April 22";
+        expectedDeliveryDate = "Arrives: March 26 - April 28";
         try {
             element = driver.findElement(prodDeliveryDate_product);
             actualDeliveryDate = element.getText();
@@ -165,14 +160,15 @@ public class Product extends Homepage {
             System.out.println(expectedCartSubtotal + " is not available at the moment.");
         }
 
+        String newTotalAmt = "$729.98";
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotalPrice_product));
             actualCartSubtotalPrice = element.getText();
-            Assert.assertEquals(actualCartSubtotalPrice,shoppingBillObj.getExpectedPrice(), "Cart Subtotal price does not match!");
+            Assert.assertEquals(actualCartSubtotalPrice,newTotalAmt, "Cart Subtotal price does not match!");
             System.out.println("Cart Subtotal price is: " + actualCartSubtotalPrice);
         }catch (Exception e){
             e.printStackTrace();
-            System.out.println(shoppingBillObj.getNewTotalAmt() + " is not available at the moment.");
+            System.out.println(newTotalAmt + " is not available at the moment.");
         }
 
         try {
