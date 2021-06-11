@@ -26,8 +26,8 @@ public class Homepage {
     By navLinks1_home = By.xpath("//a[contains(text(),\"Today's Deals\")]");
     By navLinks2_home = By.xpath("//a[contains(text(),'Customer Service')]");
     By navLinks3_home = By.xpath("//a[contains(text(),'Gift Cards')]");
-    By navLinks4_home = By.xpath("//header/div[@id='navbar']/div[@id='nav-main']/div[2]/div[2]/div[1]/a[4]");
-    By navLinks5_home = By.xpath("//a[contains(text(),'Registry')]");
+    By navLinks4_home = By.xpath("//a[contains(text(),'Registry')]");
+    By navLinks5_home = By.xpath("//body[1]/div[1]/header[1]/div[1]/div[4]/div[2]/div[2]/div[1]/a[5]");
     By navHamMenu_home = By.id("nav-hamburger-menu");
     By navHamMenuTitle1_home = By.xpath("//div[contains(text(),'digital content & devices')]");
     By navHamMenuTitle2_home = By.xpath("//div[contains(text(),'shop by department')]");
@@ -51,7 +51,7 @@ public class Homepage {
 
         String expectedTitle, actualTitle;
 
-        expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
+        expectedTitle = "Amazon.com. Spend less. Smile more.";
         try {
             actualTitle = driver.getTitle();
             Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
@@ -86,7 +86,7 @@ public class Homepage {
             element = driver.findElement(navLinks1_home);
             actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
-            System.out.println("First navigation title is: " + actualTitle1);
+            System.out.println("First navigation title: " + actualTitle1);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle1 + " is not available at the moment.");
@@ -97,7 +97,7 @@ public class Homepage {
             element = driver.findElement(navLinks2_home);
             actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
-            System.out.println("Second navigation title is: " + actualTitle2);
+            System.out.println("Second navigation title: " + actualTitle2);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle2 + " is not available at the moment.");
@@ -108,29 +108,29 @@ public class Homepage {
             element = driver.findElement(navLinks3_home);
             actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
-            System.out.println("Third navigation title is: " + actualTitle3);
+            System.out.println("Third navigation title: " + actualTitle3);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle3 + " is not available at the moment.");
         }
 
-        expectedTitle4 = "Sell";
+        expectedTitle4 = "Registry";
         try {
             element = driver.findElement(navLinks4_home);
             actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
-            System.out.println("Fourth navigation title is: " + actualTitle4);
+            System.out.println("Fourth navigation title: " + actualTitle4);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle4 + " is not available at the moment.");
         }
 
-        expectedTitle5 = "Registry";
+        expectedTitle5 = "Sell";
         try {
             element = driver.findElement(navLinks5_home);
             actualTitle5 = element.getText();
             Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
-            System.out.println("Fifth navigation title is: " + actualTitle5);
+            System.out.println("Fifth navigation title: " + actualTitle5);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle5 + " is not available at the moment.");
@@ -156,7 +156,7 @@ public class Homepage {
             element = driver.findElement(navHamMenuTitle1_home);
             actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
-            System.out.println("Navigation menu title is: " + actualTitle1);
+            System.out.println("Navigation menu title: " + actualTitle1);
         } catch (Exception e) {
             System.out.println(expectedTitle1 + " navigation menu title is not available at the moment.");
         }
@@ -166,7 +166,7 @@ public class Homepage {
             element = driver.findElement(navHamMenuTitle2_home);
             actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
-            System.out.println("Navigation menu title is: " + actualTitle2);
+            System.out.println("Navigation menu title: " + actualTitle2);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle2 + " navigation menu title is not available at the moment.");
@@ -179,7 +179,7 @@ public class Homepage {
             element = driver.findElement(navHamMenuTitle3_home);
             actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
-            System.out.println("Navigation menu title is: " + actualTitle3);
+            System.out.println("Navigation menu title: " + actualTitle3);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(expectedTitle3 + " navigation menu title is not available at the moment.");
@@ -190,7 +190,7 @@ public class Homepage {
             element = driver.findElement(navHamMenuTitle4_home);
             actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
-            System.out.println("Navigation menu title is: " + actualTitle4);
+            System.out.println("Navigation menu title: " + actualTitle4);
         } catch (Exception e) {
             System.out.println(expectedTitle4 + " navigation menu title is not available at the moment.");
         }
@@ -217,7 +217,7 @@ public class Homepage {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(sectionShopCategory_home));
             actualTitle1 = element.getText();
             Assert.assertEquals(actualTitle1, expectedTitle1, "Title does not match!");
-            System.out.println("\nSection title is: " + actualTitle1);
+            System.out.println("\nSection title: " + actualTitle1);
         } catch (Exception e) {
             System.out.println(expectedTitle1 + " section title is not available at the moment.");
         }
@@ -228,7 +228,7 @@ public class Homepage {
             //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             actualTitle2 = element.getText();
             Assert.assertEquals(actualTitle2, expectedTitle2, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle2);
+            System.out.println("Section title: " + actualTitle2);
         } catch (Exception e) {
             System.out.println(expectedTitle2 + " section title is not available at the moment.");
         }
@@ -239,7 +239,7 @@ public class Homepage {
             //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             actualTitle3 = element.getText();
             Assert.assertEquals(actualTitle3, expectedTitle3, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle3);
+            System.out.println("Section title: " + actualTitle3);
         } catch (Exception e) {
             System.out.println(expectedTitle3 + " section title is not available at the moment");
         }
@@ -249,7 +249,7 @@ public class Homepage {
             element = driver.findElement(sectionTopBeautyProd_home);
             actualTitle4 = element.getText();
             Assert.assertEquals(actualTitle4, expectedTitle4, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle4);
+            System.out.println("Section title: " + actualTitle4);
         } catch (Exception e) {
             System.out.println(expectedTitle4 + " section is not available at the moment.");
         }
@@ -259,7 +259,7 @@ public class Homepage {
             element = driver.findElement(sectionTopSellers_home);
             actualTitle5 = element.getText();
             Assert.assertEquals(actualTitle5, expectedTitle5, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle5);
+            System.out.println("Section title: " + actualTitle5);
         } catch (Exception e) {
             System.out.println(expectedTitle5 + " section is not available at the moment.");
         }
@@ -269,7 +269,7 @@ public class Homepage {
             element = driver.findElement(sectionComfyStyles_home);
             actualTitle6 = element.getText();
             Assert.assertEquals(actualTitle6, expectedTitle6, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle6);
+            System.out.println("Section title: " + actualTitle6);
         } catch (Exception e) {
             System.out.println(expectedTitle6 + "section is not available at the moment.");
         }
@@ -279,7 +279,7 @@ public class Homepage {
             element = driver.findElement(sectionGifts_home);
             actualTitle7 = element.getText();
             Assert.assertEquals(actualTitle7, expectedTitle7, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle7);
+            System.out.println("Section title: " + actualTitle7);
         } catch (Exception e) {
             System.out.println(expectedTitle7 + " section is not available at the moment.");
         }
@@ -289,7 +289,7 @@ public class Homepage {
             element = driver.findElement(sectionMustHave_home);
             actualTitle8 = element.getText();
             Assert.assertEquals(actualTitle8, expectedTitle8, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle8);
+            System.out.println("Section title: " + actualTitle8);
         } catch (Exception e) {
             System.out.println(expectedTitle8 + " section is not available at the moment.");
         }
@@ -299,7 +299,7 @@ public class Homepage {
             element = driver.findElement(sectionStuffedToys_home);
             actualTitle9 = element.getText();
             Assert.assertEquals(actualTitle9, expectedTitle9, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle9);
+            System.out.println("Section title: " + actualTitle9);
         } catch (Exception e) {
             System.out.println(expectedTitle9 + " section is not available at the moment.");
         }
@@ -309,7 +309,7 @@ public class Homepage {
             element = driver.findElement(sectionBestSellers_home);
             actualTitle10 = element.getText();
             Assert.assertEquals(actualTitle10, expectedTitle10, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle10);
+            System.out.println("Section title: " + actualTitle10);
         } catch (Exception e) {
             System.out.println(expectedTitle10 + " section is not available at the moment.");
         }
@@ -319,7 +319,7 @@ public class Homepage {
             element = driver.findElement(sectionFavToys_home);
             actualTitle11 = element.getText();
             Assert.assertEquals(actualTitle11, expectedTitle11, "Title does not match!");
-            System.out.println("Section title is: " + actualTitle11);
+            System.out.println("Section title: " + actualTitle11);
         } catch (Exception e) {
             System.out.println(expectedTitle11 + " section is not available at the moment.");
         }

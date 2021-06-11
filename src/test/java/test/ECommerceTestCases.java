@@ -103,48 +103,49 @@ public class ECommerceTestCases {
 
     } // end method testHomepage
 
-    @Test(priority = 2)
-    public void testSearchAndSearchResults() {
+    /*
+        @Test(priority = 2)
+        public void testSearchAndSearchResults() {
 
-        searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Keyboard");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("PC");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Desktop Processor");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Motherboard");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Ram");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
-        searchAndSearchResultsObj.viewListResults();
-        searchAndSearchResultsObj.clearFields();
-        homepageObj.clickHome();
+            searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Keyboard");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("PC");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Desktop Processor");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Motherboard");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Ram");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
+            searchAndSearchResultsObj.viewListResults();
+            searchAndSearchResultsObj.clearFields();
+            homepageObj.clickHome();
 
-    } // end method testSearchAndSearchResults()
-
+        } // end method testSearchAndSearchResults()
+    */
     @Test(priority = 2)
     public void testCategoryPage() {
 
         categoryObj.clickLinkShopByCat();
-        categoryObj.viewCategory();
-        categoryObj.viewLeftNavBrowseBox();
+        //categoryObj.viewCategory();
+        //categoryObj.viewLeftNavBrowseBox();
         categoryObj.viewComputersAndTablets();
 
     } // end method testCategoryPage
 
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void testProductPage() {
 
         productObj.viewProduct();
@@ -154,42 +155,43 @@ public class ECommerceTestCases {
 
     } // end method testProductPage()
 
-/*
-        @Test(priority = 5)
-        public void testLoginPage() throws FileNotFoundException {
 
-            //loginObj.clickAccountList();
-            loginObj.viewLoginUsername();
-            loginObj.inputUserCredentials();
-            loginObj.viewLoginPassword();
-            loginObj.inputPasswordCredentials();
+    @Test(priority = 5)
+    public void testLoginPage() throws FileNotFoundException {
 
-        } // end method testLoginPage()
+        //loginObj.clickAccountList();
+        loginObj.viewLoginUsername();
+        loginObj.inputUserCredentials();
+        loginObj.viewLoginPassword();
+        loginObj.inputPasswordCredentials();
 
-        @Test(priority = 6)
-        public void testShipping() throws InterruptedException {
+    } // end method testLoginPage()
 
-            shippingObj.viewShipping();
-            shippingObj.addNewAddress();
-            shippingObj.viewShippingOptions();
 
-        } // end method testShipping()
+    @Test(priority = 6)
+    public void testShipping() throws InterruptedException {
 
-        @Test(priority = 7)
-        public void testShoppingCart() {
+        shippingObj.viewShipping();
+        shippingObj.addNewAddress();
+        shippingObj.viewShippingOptions();
 
-            shoppingCartObj.viewShoppingCart();
-            shoppingCartObj.proceedToCheckout();
+    } // end method testShipping()
 
-        } // end method testShoppingCart()
+    @Test(priority = 7)
+    public void testShoppingCart() {
 
-        @Test(priority = 7)
-        public void testPaymentMethod() {
+        shoppingCartObj.viewShoppingCart();
+        shoppingCartObj.proceedToCheckout();
 
-            paymentMethodObj.viewPaymentMethod();
+    } // end method testShoppingCart()
 
-        } // end method testPaymentMethod()
-*/
+    @Test(priority = 7)
+    public void testPaymentMethod() {
+
+        paymentMethodObj.viewPaymentMethod();
+
+    } // end method testPaymentMethod()
+
     @AfterTest
     public void quitBrowser() {
 

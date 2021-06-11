@@ -84,7 +84,7 @@ public class Product extends Homepage {
             System.out.println(expectedTitle2 + " is not available at the moment.");
         }
 
-        expectedPrice = "$364.99";
+        expectedPrice = "$439.00";
 
         try {
             element = driver.findElement(prodPrice_product);
@@ -96,7 +96,7 @@ public class Product extends Homepage {
             System.out.println(expectedPrice + " is not available at the moment.");
         }
 
-        expectedShippingImportFees = "$170.72 Shipping & Import Fees Deposit to Philippines";
+        expectedShippingImportFees = "$221.60 Shipping & Import Fees Deposit to Philippines";
         try {
             element = driver.findElement(prodShippingImportFees_product);
             actualShippingImportFees = element.getText();
@@ -160,7 +160,7 @@ public class Product extends Homepage {
             System.out.println(expectedCartSubtotal + " is not available at the moment.");
         }
 
-        String newTotalAmt = "$729.98";
+        String newTotalAmt = "$878.00";
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(prodCartSubtotalPrice_product));
             actualCartSubtotalPrice = element.getText();
