@@ -12,7 +12,7 @@ public class Login extends Homepage {
 
     protected static ReadTextFiles readTextFilesObj;
 
-    By acctListsLink_login = By.cssSelector("#nav-link-accountList");
+    By acctListsLink_login = By.xpath("//span[@id='nav-link-accountList-nav-line-1']");
     By signIn_login = By.xpath("//h1[contains(text(),'Sign-In')]");
     By emailOrPhoneNum_login = By.xpath("//label[contains(text(),'Email or mobile phone number')]");
     By emailOrPhoneNumInput_login = By.xpath("//input[@id='ap_email']");
@@ -30,13 +30,13 @@ public class Login extends Homepage {
     By rememberMeChkbox_login = By.name("rememberMe");
     By rememberMeTxt_login = By.className("a-checkbox-label");
 
-    /*
-        public void clickAccountList(){
 
-            driver.findElement(acctListsLink_login).click();
+    public void clickAccountList() {
 
-        } // end method clickAccountList()
-    */
+        driver.findElement(acctListsLink_login).click();
+
+    } // end method clickAccountList()
+
     public void viewLoginUsername() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

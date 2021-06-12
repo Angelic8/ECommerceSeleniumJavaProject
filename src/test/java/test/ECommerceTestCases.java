@@ -35,6 +35,7 @@ public class ECommerceTestCases {
     protected static Shipping shippingObj;
     protected static ShoppingCart shoppingCartObj;
     protected static PaymentMethod paymentMethodObj;
+    protected static SearchAndShopMultipleProducts searchAndShopMultipleProductsObj;
 
     @BeforeTest
     public void setupTest() {
@@ -66,6 +67,7 @@ public class ECommerceTestCases {
         driver.get(appURL);
         driver.manage().deleteAllCookies();
 
+        // set Homepage as the parent; this is the base page - child inherits the manual setter setWebDriver
         homepageObj = new Homepage();
         homepageObj.setWebDriver(driver);
 
@@ -89,6 +91,9 @@ public class ECommerceTestCases {
 
         paymentMethodObj = new PaymentMethod();
         paymentMethodObj.setWebDriver(driver);
+
+        searchAndShopMultipleProductsObj = new SearchAndShopMultipleProducts();
+        searchAndShopMultipleProductsObj.setWebDriver(driver);
 
     } // end method setupTest()
 
@@ -136,6 +141,30 @@ public class ECommerceTestCases {
         } // end method testSearchAndSearchResults()
     */
     @Test(priority = 2)
+    public void testLoginPage() throws FileNotFoundException {
+
+        loginObj.clickAccountList();
+        loginObj.viewLoginUsername();
+        loginObj.inputUserCredentials();
+        loginObj.viewLoginPassword();
+        loginObj.inputPasswordCredentials();
+
+    } // end method testLoginPage()
+
+
+    @Test(priority = 3)
+    public void testSearchAndShopMultipleProducts() {
+        searchAndShopMultipleProductsObj.searchForLaptopAccessories("Soundance Laptop Stand, Aluminum Computer Riser, Ergonomic Laptops Elevator for Desk, Metal Holder Compatible with 10 to 15.6 Inches Notebook Computer, Silver");
+        searchAndShopMultipleProductsObj.viewLaptopAccessories();
+        searchAndShopMultipleProductsObj.laptopPrice();
+        searchAndShopMultipleProductsObj.select3Qty();
+        searchAndShopMultipleProductsObj.clickAddToCartBtn();
+
+    } // end testSearchAndShopMultipleProducts()
+
+
+    /*
+    @Test(priority = 3)
     public void testCategoryPage() {
 
         categoryObj.clickLinkShopByCat();
@@ -145,7 +174,7 @@ public class ECommerceTestCases {
 
     } // end method testCategoryPage
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void testProductPage() {
 
         productObj.viewProduct();
@@ -185,13 +214,13 @@ public class ECommerceTestCases {
 
     } // end method testShoppingCart()
 
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void testPaymentMethod() {
 
         paymentMethodObj.viewPaymentMethod();
 
     } // end method testPaymentMethod()
-
+*/
     @AfterTest
     public void quitBrowser() {
 
