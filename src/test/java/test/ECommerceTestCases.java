@@ -154,11 +154,20 @@ public class ECommerceTestCases {
 
     @Test(priority = 3)
     public void testSearchAndShopMultipleProducts() {
-        searchAndShopMultipleProductsObj.searchForLaptopAccessories("Soundance Laptop Stand, Aluminum Computer Riser, Ergonomic Laptops Elevator for Desk, Metal Holder Compatible with 10 to 15.6 Inches Notebook Computer, Silver");
+        searchAndShopMultipleProductsObj.searchForItems("Soundance Laptop Stand, Aluminum Computer Riser, Ergonomic Laptops Elevator for Desk, Metal Holder Compatible with 10 to 15.6 Inches Notebook Computer, Silver");
         searchAndShopMultipleProductsObj.viewLaptopAccessories();
         searchAndShopMultipleProductsObj.laptopPrice();
         searchAndShopMultipleProductsObj.select3Qty();
         searchAndShopMultipleProductsObj.clickAddToCartBtn();
+        searchAndShopMultipleProductsObj.clickCartBtn();
+        searchAndShopMultipleProductsObj.searchForItems("Logitech USB Headset H390 with Noise Cancelling Mic");
+        searchAndShopMultipleProductsObj.viewUSBHeadset();
+        searchAndShopMultipleProductsObj.viewUSBHeadset();
+        searchAndShopMultipleProductsObj.selectSize1Pack();
+        searchAndShopMultipleProductsObj.seeSimilarItems();
+        searchAndShopMultipleProductsObj.seeSimilarItemsAddToCartBtn();
+        searchAndShopMultipleProductsObj.searchForItems("TP-Link AC1750 Smart WiFi Router (Archer A7) -Dual Band Gigabit Wireless Internet Router for Home, Works with Alexa, VPN Server, Parental Control, QoS");
+
 
     } // end testSearchAndShopMultipleProducts()
 
