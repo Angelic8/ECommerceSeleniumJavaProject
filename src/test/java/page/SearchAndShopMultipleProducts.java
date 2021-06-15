@@ -32,6 +32,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
     By wifiRouterPrice_product = By.xpath("//span[@id='price_inside_buybox']");
 
 
+
     public void searchForItems(String text){
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -100,6 +101,8 @@ public class SearchAndShopMultipleProducts extends Homepage {
     } // end clickAddToCartBtn()
 
     public void clickCartBtn(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(cartBtn_product));
         element.click();
     }
@@ -108,7 +111,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
-            element = wait.until(ExpectedConditions.visibilityOfElementLocated(USBHeadsetLink_product));
+            element = driver.findElement(USBHeadsetLink_product);
             element.click();
             System.out.println("USB Headset Link is clicked.");
         }catch (Exception e){
@@ -169,7 +172,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
     }
 
     public void viewProductDetails(){
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(brand_product));
@@ -188,7 +191,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
         }
 
         try {
-            element = wait.until(ExpectedConditions.visibilityOfElementLocated(modelName_product));
+            element = driver.findElement(modelName_product);
             String actualModelName = element.getText();
             System.out.println("Model name: " + actualModelName);
         }catch (Exception e){
@@ -217,5 +220,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
         System.out.println("Wifi Router Price: " + actualWifiPRice);
 
     }
+
+
 
 } // end SearchAndShopMultipleProducts

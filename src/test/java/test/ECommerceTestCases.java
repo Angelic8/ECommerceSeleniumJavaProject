@@ -171,7 +171,9 @@ public class ECommerceTestCases {
         searchAndShopMultipleProductsObj.searchForItems("TP-Link AC1750 Smart WiFi Router (Archer A7) -Dual Band Gigabit Wireless Internet Router for Home, Works with Alexa, VPN Server, Parental Control, QoS");
         searchAndShopMultipleProductsObj.viewWifiRouter();
         searchAndShopMultipleProductsObj.wifiRouterPrice();
-        searchAndShopMultipleProductsObj.clickCartBtn();
+        searchAndShopMultipleProductsObj.clickAddToCartBtn();
+        homepageObj.clickHome();
+
 
     } // end testSearchAndShopMultipleProducts()
 
