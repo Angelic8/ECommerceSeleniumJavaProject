@@ -25,13 +25,19 @@ public class SearchAndShopMultipleProducts extends Homepage {
     By size1_product = By.cssSelector("#native_dropdown_selected_size_name_1");
     By seeSimilarItems_product = By.xpath("//body/div[@id='a-page']/div[@id='dp']/div[@id='dp-container']/div[@id='ppd']/div[@id='rightCol']/div[@id='desktop_buybox']/div[@id='buybox']/div[@id='exports_desktop_buybox']/div[@id='exportsBuybox']/div[@id='exports_desktop_unqualifiedBuyBox']/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/span[2]/div[1]/span[1]/span[1]/input[1]");
     By seeSimilarAddToCartBtn_product = By.xpath("//tbody/tr[8]/td[2]/div[1]/span[2]/span[1]/input[1]");
+    By brand_product = By.xpath("//body[1]/div[2]/div[2]/div[8]/div[3]/div[4]/div[34]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/span[1]");
+    By color_product = By.xpath("//span[contains(text(),'Black, Silver')]");
+    By modelName_product = By.xpath("//span[contains(text(),'ClearChat')]");
+    By wifiRouterLink_searchResults = By.xpath("//body/div[@id='a-page']/div[@id='search']/div[1]/div[1]/div[1]/div[1]/span[3]/div[2]/div[3]/div[1]/span[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/h2[1]/a[1]/span[1]");
+    By wifiRouterPrice_product = By.xpath("//span[@id='price_inside_buybox']");
 
 
     public void searchForItems(String text){
-        //wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchField_home));
             element.clear();
-            element = driver.findElement(searchField_home);
             element.sendKeys(text);
 
             element = driver.findElement(searchBtn_home);
@@ -151,7 +157,7 @@ public class SearchAndShopMultipleProducts extends Homepage {
     }
 
     public void seeSimilarItemsAddToCartBtn(){
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         try{
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(seeSimilarAddToCartBtn_product));
@@ -162,7 +168,54 @@ public class SearchAndShopMultipleProducts extends Homepage {
         }
     }
 
+    public void viewProductDetails(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(brand_product));
+            String actualBrand = element.getText();
+            System.out.println("Special Feature: " + actualBrand);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(color_product));
+            String actualColor = element.getText();
+            System.out.println("Color: " + actualColor);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(modelName_product));
+            String actualModelName = element.getText();
+            System.out.println("Model name: " + actualModelName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void viewWifiRouter(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(wifiRouterLink_searchResults));
+            element.click();
+            System.out.println("Wifi Router link is clicked.");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Wifi Router link is not available at the moment.");
+        }
+    }
+
+    public void wifiRouterPrice(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(wifiRouterPrice_product));
+        String actualWifiPRice = element.getText();
+        System.out.println("Wifi Router Price: " + actualWifiPRice);
+
+    }
 
 } // end SearchAndShopMultipleProducts

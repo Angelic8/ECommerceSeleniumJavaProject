@@ -45,7 +45,7 @@ public class Homepage {
     By sectionStuffedToys_home = By.xpath("//span[contains(text(),'Stuffed Animals & Toys under $10')]");
     By sectionBestSellers_home = By.xpath("//span[contains(text(),'Best Sellers in Baby')]");
     By sectionFavToys_home = By.xpath("//span[contains(text(),'Our favorite Toys')]");
-    By homeLogo = By.xpath("//a[@id='nav-logo-sprites']");
+    By homeLogo = By.cssSelector("#nav-logo-sprites");
 
     public void viewHomepage() {
 
@@ -333,6 +333,7 @@ public class Homepage {
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(homeLogo));
             element.click();
+            System.out.println("Amazon logo is clicked.");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("\nHome logo is not available at the moment.");
