@@ -108,38 +108,38 @@ public class ECommerceTestCases {
 
     } // end method testHomepage
 
-    /*
-        @Test(priority = 2)
-        public void testSearchAndSearchResults() {
 
-            searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Keyboard");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("PC");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Desktop Processor");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Motherboard");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Ram");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
-            searchAndSearchResultsObj.viewListResults();
-            searchAndSearchResultsObj.clearFields();
-            homepageObj.clickHome();
+    @Test(priority = 2)
+    public void testSearchAndSearchResults() {
 
-        } // end method testSearchAndSearchResults()
-    */
+        searchAndSearchResultsObj.enterSearchFieldHome("Laptop");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Mouse");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Keyboard");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("PC");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Desktop Processor");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Motherboard");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Ram");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        searchAndSearchResultsObj.enterSearchFieldHome("Computer Server");
+        searchAndSearchResultsObj.viewListResults();
+        searchAndSearchResultsObj.clearFields();
+        homepageObj.clickHome();
+
+    } // end method testSearchAndSearchResults()
+
     @Test(priority = 2)
     public void testLoginPage() throws FileNotFoundException {
 
@@ -160,13 +160,9 @@ public class ECommerceTestCases {
         searchAndShopMultipleProductsObj.select3Qty();
         searchAndShopMultipleProductsObj.clickAddToCartBtn();
         searchAndShopMultipleProductsObj.clickCartBtn();
-        searchAndShopMultipleProductsObj.searchForItems("Logitech USB Headset H390 with Noise Cancelling Mic");
+        searchAndShopMultipleProductsObj.searchForItems("Logitech USB Headset H390 with Noise Cancelling Mic (Case of 16)");
         searchAndShopMultipleProductsObj.viewUSBHeadset();
-        searchAndShopMultipleProductsObj.viewUSBHeadset();
-        searchAndShopMultipleProductsObj.selectSize1Pack();
-        searchAndShopMultipleProductsObj.seeSimilarItems();
-        searchAndShopMultipleProductsObj.seeSimilarItemsAddToCartBtn();
-        searchAndShopMultipleProductsObj.viewProductDetails();
+        searchAndShopMultipleProductsObj.clickAddToCartBtn();
         homepageObj.clickHome();
         searchAndShopMultipleProductsObj.searchForItems("TP-Link AC1750 Smart WiFi Router (Archer A7) -Dual Band Gigabit Wireless Internet Router for Home, Works with Alexa, VPN Server, Parental Control, QoS");
         searchAndShopMultipleProductsObj.viewWifiRouter();

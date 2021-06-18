@@ -35,13 +35,13 @@ public class SearchAndSearchResults extends Homepage {
 
     public void viewListResults() {
 
-        List<WebElement> test;
         int countDiv, number;
         WebElement count, searchTerm;
         String countTotal, searchTermText, value;
+        List<WebElement> test;
+        test = driver.findElements(list_viewResults);
 
         number = 1;
-        test = driver.findElements(list_viewResults);
         countDiv = test.size();
         count = driver.findElement(list_countResults);
         countTotal = count.getText();
