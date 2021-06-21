@@ -36,6 +36,7 @@ public class ECommerceTestCases {
     protected static ShoppingCart shoppingCartObj;
     protected static PaymentMethod paymentMethodObj;
     protected static SearchAndShopMultipleProducts searchAndShopMultipleProductsObj;
+    protected static NegativeLogin negativeLoginObj;
 
     @BeforeTest
     public void setupTest() {
@@ -95,6 +96,9 @@ public class ECommerceTestCases {
         searchAndShopMultipleProductsObj = new SearchAndShopMultipleProducts();
         searchAndShopMultipleProductsObj.setWebDriver(driver);
 
+        negativeLoginObj = new NegativeLogin();
+
+
     } // end method setupTest()
 
     @Test(priority = 1)
@@ -108,7 +112,7 @@ public class ECommerceTestCases {
 
     } // end method testHomepage
 
-
+/*
     @Test(priority = 2)
     public void testSearchAndSearchResults() {
 
@@ -141,18 +145,32 @@ public class ECommerceTestCases {
     } // end method testSearchAndSearchResults()
 
     @Test(priority = 2)
+    public void testNegativeLogin(){
+        loginObj.clickAccountList();
+        loginObj.viewLoginUsername();
+        negativeLoginObj.inputIncorrectEmailAndPassword("samsmith@gmail.com");
+        loginObj.clickContinueBtn();
+        negativeLoginObj.inputPasswordCredentials("p@ssw0rd");
+        loginObj.clickSignIn();
+        negativeLoginObj.loginMessage();
+    } // end testNegativeLogin()
+*/
+
+    @Test(priority = 3)
     public void testLoginPage() throws FileNotFoundException {
 
         loginObj.clickAccountList();
         loginObj.viewLoginUsername();
         loginObj.inputUserCredentials();
+        loginObj.clickContinueBtn();
         loginObj.viewLoginPassword();
         loginObj.inputPasswordCredentials();
+        loginObj.clickSignIn();
 
     } // end method testLoginPage()
 
-
-    @Test(priority = 3)
+/*
+    @Test(priority = 4)
     public void testSearchAndShopMultipleProducts() {
         searchAndShopMultipleProductsObj.searchForItems("Soundance Laptop Stand, Aluminum Computer Riser, Ergonomic Laptops Elevator for Desk, Metal Holder Compatible with 10 to 15.6 Inches Notebook Computer, Silver");
         searchAndShopMultipleProductsObj.viewLaptopAccessories();
@@ -169,13 +187,13 @@ public class ECommerceTestCases {
         searchAndShopMultipleProductsObj.wifiRouterPrice();
         searchAndShopMultipleProductsObj.clickAddToCartBtn();
         homepageObj.clickHome();
-
+        searchAndShopMultipleProductsObj.searchForItems("USB Wall Charger, Surge Protector, POWRUI 6-Outlet Extender with 2 USB Charging Ports (2.4A Total) and Night Light, 3-Sided Power Strip with Adapter Spaced Outlets - White，ETL Listed");
+        searchAndShopMultipleProductsObj.viewWallCharger();
+        searchAndShopMultipleProductsObj.clickAddToCartBtn();
 
     } // end testSearchAndShopMultipleProducts()
 
-
-    /*
-    @Test(priority = 3)
+    @Test(priority = 5)
     public void testCategoryPage() {
 
         categoryObj.clickLinkShopByCat();
@@ -185,7 +203,7 @@ public class ECommerceTestCases {
 
     } // end method testCategoryPage
 
-    @Test(priority = 4)
+    @Test(priority = 6)
     public void testProductPage() {
 
         productObj.viewProduct();
@@ -196,7 +214,7 @@ public class ECommerceTestCases {
     } // end method testProductPage()
 
 
-    @Test(priority = 5)
+    @Test(priority = 7)
     public void testLoginPage() throws FileNotFoundException {
 
         //loginObj.clickAccountList();
@@ -208,7 +226,7 @@ public class ECommerceTestCases {
     } // end method testLoginPage()
 
 
-    @Test(priority = 6)
+    @Test(priority = 8)
     public void testShipping() throws InterruptedException {
 
         shippingObj.viewShipping();
@@ -217,7 +235,7 @@ public class ECommerceTestCases {
 
     } // end method testShipping()
 
-    @Test(priority = 7)
+    @Test(priority = 9)
     public void testShoppingCart() {
 
         shoppingCartObj.viewShoppingCart();
@@ -225,7 +243,7 @@ public class ECommerceTestCases {
 
     } // end method testShoppingCart()
 
-    @Test(priority = 8)
+    @Test(priority = 10)
     public void testPaymentMethod() {
 
         paymentMethodObj.viewPaymentMethod();

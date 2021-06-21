@@ -24,7 +24,10 @@ public class SearchAndShopMultipleProducts extends Homepage {
     By USBHeadsetBrand_product = By.xpath("//body[1]/div[2]/div[2]/div[9]/div[4]/div[4]/div[36]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/span[1]");
     By wifiRouterLink_searchResults = By.xpath("//body/div[@id='a-page']/div[@id='search']/div[1]/div[1]/div[1]/div[1]/span[3]/div[2]/div[3]/div[1]/span[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/h2[1]/a[1]/span[1]");
     By wifiRouterPrice_product = By.xpath("//span[@id='price_inside_buybox']");
-
+    By wallChargerTitleLink_product = By.xpath("//body/div[@id='a-page']/div[@id='search']/div[1]/div[1]/div[1]/div[1]/span[3]/div[2]/div[3]/div[1]/span[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/h2[1]/a[1]/span[1]");
+    By wallChargerTitle_product = By.xpath("//span[@id='productTitle']");
+    By wallChargerPrice_product = By.xpath("//span[@id='price_inside_buybox']");
+    By wallChargerDDate_product = By.xpath("//div[@id='mir-layout-DELIVERY_BLOCK-slot-DELIVERY_MESSAGE']");
 
 
     public void searchForItems(String text){
@@ -149,8 +152,45 @@ public class SearchAndShopMultipleProducts extends Homepage {
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(wifiRouterPrice_product));
         String actualWifiPRice = element.getText();
         System.out.println("Wifi Router Price: " + actualWifiPRice);
+    }
+
+    public void viewWallCharger(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(wallChargerTitleLink_product));
+            element.click();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(wallChargerTitle_product));
+            String actualWallCharger = element.getText();
+            System.out.println("Product title: " + actualWallCharger);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(wallChargerPrice_product));
+            //element = driver.findElement(wallChargerPrice_product);
+            String actualWallChargerPrice = element.getText();
+            System.out.println("Wall Charger Price: " + actualWallChargerPrice);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(wallChargerDDate_product));
+            String actualWallChargerDate = element.getText();
+            System.out.println("Wall Charger Delivery Date: " + actualWallChargerDate);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
+
 
 
 

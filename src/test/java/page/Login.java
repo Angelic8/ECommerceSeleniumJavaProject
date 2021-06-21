@@ -127,6 +127,9 @@ public class Login extends Homepage {
             System.out.println("Email or phone number input field is not available at the moment.");
         }
 
+    } // end method inputUserCredentials()
+
+    public void clickContinueBtn(){
         try {
             element = wait.until(ExpectedConditions.elementToBeClickable(continueBtn_login));
             element.click();
@@ -135,8 +138,7 @@ public class Login extends Homepage {
             e.printStackTrace();
             System.out.println("Continue button is not available at the moment.");
         }
-
-    } // end method inputUserCredentials()
+    }
 
     public void viewLoginPassword() throws FileNotFoundException {
 
@@ -231,6 +233,9 @@ public class Login extends Homepage {
             System.out.println(expectedRememberMeTxt + " is not available at the moment.");
         }
 
+    } // end method inputPasswordCredentials()
+
+    public void clickSignIn(){
         try {
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(signInSubmitBtn_login));
             element.click();
@@ -239,7 +244,6 @@ public class Login extends Homepage {
             e.printStackTrace();
             System.out.println("Sign in submit button is not available at the moment.");
         }
-
-    } // end method inputPasswordCredentials()
+    }
 
 } // end method Login
